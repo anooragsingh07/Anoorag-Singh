@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me - Anoorag Singh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background: #f7f9fa;
+      color: #222;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+    .navbar {
+      max-width: 900px;
+      margin: 32px auto 0 auto;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+      padding: 24px 32px 18px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 32px;
+      border: 2px solid #e3eaf3;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      flex: 1;
+    }
+    .nav-link {
+      color: #555;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.3rem;
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav-link.active, .nav-link:hover {
+      color: #4fc3f7;
+    }
+    .nav-link.active::after {
+      content: '';
+      display: block;
+      height: 2px;
+      background: #4fc3f7;
+      border-radius: 2px;
+      width: 100%;
+      margin-top: 2px;
+      transition: width 0.2s;
+    }
+    @media (max-width: 700px) {
+      .navbar { flex-direction: column; gap: 10px; align-items: flex-start; padding: 12px 4px; }
+      .nav-links { gap: 18px; }
+    }
+    .about-section {
+      max-width: 760px;
+      margin: 48px auto 48px auto;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 2px 16px 0 rgba(60,60,60,0.06);
+      padding: 44px 38px 38px 38px;
+      text-align: center;
+    }
+    .about-avatar {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+    .about-avatar-img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 2px 8px 0 rgba(60,60,60,0.08);
+      background: #e3eaf3;
+    }
+    .about-heading {
+      font-size: 2.7rem;
+      font-weight: 800;
+      margin-bottom: 0.2em;
+      text-align: center;
+      letter-spacing: -1px;
+    }
+    .about-subtitle {
+      color: #757575;
+      font-size: 1.25rem;
+      margin-bottom: 2.2em;
+      text-align: center;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+    }
+    .about-intro {
+      color: #222;
+      font-size: 1.18rem;
+      margin-bottom: 1.7em;
+      text-align: left;
+      line-height: 1.7;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .about-highlight, .about-intro .about-highlight {
+      color: #4fc3f7;
+      font-weight: 700;
+    }
+    .about-bold {
+      font-weight: 700;
+    }
+    .about-gold {
+      color: #d4af37;
+      font-weight: 700;
+    }
+    .about-divider {
+      border-bottom: 1.5px solid #e3eaf3;
+      margin: 28px 0 28px 0;
+    }
+    .about-subheading {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.7em;
+      margin-top: 0.7em;
+      text-align: left;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .about-quote {
+      border-left: 3px solid #1976d2;
+      margin: 16px 0 8px 0;
+      padding-left: 16px;
+      color: #1976d2;
+      font-style: italic;
+      font-size: 1.08rem;
+      text-align: left;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .about-quote-sub {
+      color: #888;
+      font-size: 0.98rem;
+      font-style: normal;
+    }
+    .about-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+      justify-content: center;
+    }
+    .about-badges span {
+      background: #e3eaf3;
+      color: #1976d2;
+      border-radius: 6px;
+      padding: 3px 12px;
+      font-size: 0.97rem;
+      font-weight: 500;
+      display: inline-block;
+    }
+    .about-actions {
+      margin-top: 18px;
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+    }
+    .btn {
+      background: #4fc3f7;
+      color: #222;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 22px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      outline: none;
+    }
+    .btn.secondary {
+      background: #fff;
+      color: #1976d2;
+      border: 1.5px solid #e3eaf3;
+    }
+    .btn:focus, .btn:hover {
+      background: #1976d2;
+      color: #fff;
+    }
+    .btn.secondary:focus, .btn.secondary:hover {
+      background: #e3eaf3;
+      color: #1976d2;
+    }
+    @media (max-width: 700px) {
+      .about-section { padding: 16px 4px; }
+      .about-actions { flex-direction: column; align-items: center; }
+      .about-intro, .about-subheading, .about-quote { max-width: 98vw; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar" role="navigation" aria-label="Main Navigation">
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="index.html#projects" class="nav-link">Projects</a>
+      <a href="#" class="nav-link">Blog</a>
+      <a href="about.html" class="nav-link active">About</a>
+    </div>
+  </nav>
+  <section class="about-section" id="about">
+    <div class="about-avatar">
+      <img src="astronaut_avatar.png" alt="Avatar" class="about-avatar-img" />
+    </div>
+    <h2 class="about-heading">About Me</h2>
+    <div class="about-subtitle">Aspiring Software Engineer, Problem Solver, Continuous Learner</div>
+    <div class="about-intro">
+      Hey, I'm <span class="about-highlight">Anoorag!</span> A 2nd-year B.Tech student with a passion for both sprinting and coding. Whether I'm running on the track or building interactive landing pages, I approach both with the same energy and precision. From winning school athletics medals to designing smooth, responsive websites, <span class="about-bold">speed, focus, and dedication</span> are my guiding principles.
+    </div>
+    <div class="about-intro">
+      My coding journey began with <span class="about-bold">C++ and DSA</span>, and I quickly fell for the world of web design. With tools like <span class="about-bold">HTML, Tailwind CSS, and Bootstrap</span>, I love bringing fresh ideas to life with seamless interfaces. Just as I chase my personal best on the track, I chase perfection in every project I work on.
+    </div>
+    <div class="about-divider"></div>
+    <h3 class="about-subheading">Sprinting Through Code</h3>
+    <div class="about-intro">
+      Athletics taught me discipline, focus, and the importance of every second. I carry these lessons into my coding, whether I'm debugging a tricky issue or optimizing performance. Small wins in coding fuel my motivation, just like crossing the finish line.
+      <blockquote class="about-quote">"The best way to predict the future is to create it."<br><span class="about-quote-sub">Or, in my case, debug it.</span></blockquote>
+    </div>
+    <div class="about-divider"></div>
+    <h3 class="about-subheading">What I Do</h3>
+    <div class="about-intro">
+      I specialize in building dynamic, responsive UIs, solving DSA problems, and embracing the beauty of clean, functional design. My goal is to merge simplicity with performance, making every project impactful.
+      <div class="about-badges">
+        <span>C++</span><span>DSA</span><span>OOP</span><span>CN</span><span>OS</span>
+        <span>HTML</span><span>CSS</span><span>JavaScript</span>
+        <span>Tailwind CSS</span><span>Bootstrap</span>
+        <span>Git</span><span>GitHub</span><span>VS Code</span>
+      </div>
+    </div>
+    <div class="about-divider"></div>
+    <h3 class="about-subheading">Beyond Coding</h3>
+    <div class="about-intro">
+      When I'm not coding, you'll find me on the badminton court or sprinting towards new challenges. I live by the same mindset that made me a medalist: always pushing forward, learning from every experience, and staying ready for the next race—whether it's physical or mental.
+    </div>
+    <div class="about-divider"></div>
+    <h3 class="about-subheading">Let's Connect</h3>
+    <div class="about-intro">
+      I'm always up for chatting about new projects, opportunities, or just connecting with like-minded people. Feel free to reach out!
+      <div class="about-actions">
+        <a href="mailto:anooragsingh0007@gmail.com" class="btn">Get in Touch</a>
+        <a href="#" class="btn secondary">View Resume</a>
+      </div>
+    </div>
+  </section>
+</body>
+</html> 
