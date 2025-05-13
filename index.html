@@ -470,6 +470,96 @@
       align-items: center;
       margin-left: 18px;
     }
+    .projects-section {
+      margin-top: 32px;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    .project-card {
+      background: #fff;
+      border: 2px solid #e3eaf3;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px 0 rgba(60,60,60,0.04);
+      padding: 22px 20px 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-height: 220px;
+      transition: box-shadow 0.2s, border 0.2s;
+    }
+    .project-card:hover {
+      box-shadow: 0 4px 24px 0 rgba(60,60,60,0.10);
+      border-color: #90caf9;
+    }
+    [data-theme="dark"] .project-card {
+      background: #232b3a;
+      border: 2px solid #2c3647;
+      box-shadow: 0 2px 12px 0 rgba(0,0,0,0.10);
+    }
+    .project-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+    .project-title {
+      font-size: 1.13rem;
+      font-weight: 600;
+      color: #222;
+    }
+    [data-theme="dark"] .project-title {
+      color: #e6eaf3;
+    }
+    .project-link svg {
+      vertical-align: middle;
+      color: #222;
+      transition: color 0.2s;
+    }
+    .project-link:hover svg {
+      color: #1976d2;
+    }
+    [data-theme="dark"] .project-link svg {
+      color: #e6eaf3;
+    }
+    .project-desc {
+      font-size: 1.01rem;
+      color: #444;
+      margin-bottom: 2px;
+    }
+    [data-theme="dark"] .project-desc {
+      color: #bfc9d1;
+    }
+    .project-bullets {
+      margin: 0 0 4px 18px;
+      padding: 0;
+      color: #222;
+      font-size: 0.98rem;
+    }
+    [data-theme="dark"] .project-bullets {
+      color: #e6eaf3;
+    }
+    .project-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+    }
+    .project-badges span {
+      background: #e3eaf3;
+      color: #1976d2;
+      border-radius: 6px;
+      padding: 3px 12px;
+      font-size: 0.97rem;
+      font-weight: 500;
+      display: inline-block;
+    }
+    [data-theme="dark"] .project-badges span {
+      background: #263143;
+      color: #6DCEF9;
+    }
   </style>
 </head>
 <body>
@@ -561,39 +651,92 @@
       </div>
     </section>
     <div class="section-title" id="projects">Projects</div>
-    <section>
-      <div class="card">
-        <div class="card-title">CPU-SchedSim - CPU Scheduling Simulator</div>
-        <ul>
-          <li>Designed a C++-based CPU scheduling simulator to analyze and compare FCFS, SJF, Round-Robin, and Priority Scheduling algorithms.</li>
-          <li>Implemented context switching, preemption, and exponential arrival times for realistic scheduling.</li>
-          <li>Added configurable parameters like time slices and priority levels to study CPU performance.</li>
-        </ul>
-        <div class="badges">
-          <span class="badge">C++</span>
-          <span class="badge">Algorithms</span>
-          <span class="badge">Simulator</span>
+    <section class="projects-section">
+      <div class="projects-grid">
+        <!-- SmartShelf -->
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-title">SmartShelf</span>
+            <a href="https://github.com/anooragsingh07/Smart-Shelf" target="_blank" class="project-link" title="GitHub" aria-label="GitHub">
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+            </a>
+          </div>
+          <div class="project-desc">Browser-based kitchen inventory tool with localStorage, expiry alerts, and downloadable shopping list.</div>
+          <ul class="project-bullets">
+            <li>Developed with HTML, CSS, and JavaScript; features localStorage data persistence, expiry alerts, and downloadable PNG shopping list.</li>
+            <li>Dynamic UI with light/dark mode, automated status indicators, and real-time filtering. No login or installation required.</li>
+          </ul>
+          <div class="project-badges">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+          </div>
         </div>
-      </div>
-      <div class="card">
-        <div class="card-title">Personal Portfolio</div>
-        <ul>
-          <li>Built a responsive personal portfolio using HTML and Tailwind CSS.</li>
-        </ul>
-        <div class="badges">
-          <span class="badge">HTML</span>
-          <span class="badge">Tailwind CSS</span>
+        <!-- CPU-SchedSim -->
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-title">CPU-SchedSim - CPU Scheduling Simulator</span>
+            <a href="https://github.com/anooragsingh07/CPU-SchedSim--CPU-Scheduling-Simulator-" target="_blank" class="project-link" title="GitHub" aria-label="GitHub">
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+            </a>
+          </div>
+          <div class="project-desc">C++-based simulator to analyze and compare CPU scheduling algorithms.</div>
+          <ul class="project-bullets">
+            <li>Designed to analyze FCFS, SJF, Round-Robin, and Priority Scheduling algorithms.</li>
+            <li>Implemented context switching, preemption, and exponential arrival times for realistic scheduling.</li>
+            <li>Configurable parameters like time slices and priority levels for CPU performance study.</li>
+          </ul>
+          <div class="project-badges">
+            <span>C++</span><span>Algorithms</span><span>Simulator</span>
+          </div>
         </div>
-      </div>
-      <div class="card">
-        <div class="card-title">Landing Pages</div>
-        <ul>
-          <li>Designed and developed interactive landing pages using HTML, Tailwind CSS, and Bootstrap.</li>
-        </ul>
-        <div class="badges">
-          <span class="badge">HTML</span>
-          <span class="badge">Tailwind CSS</span>
-          <span class="badge">Bootstrap</span>
+        <!-- Mind Minute -->
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-title">Mind Minute</span>
+            <a href="https://github.com/anooragsingh07/Mind-Minute" target="_blank" class="project-link" title="GitHub" aria-label="GitHub">
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+            </a>
+          </div>
+          <div class="project-desc">Lightweight wellness web app for 1-minute stress relief breaks.</div>
+          <ul class="project-bullets">
+            <li>Guided breathing, yoga, and mindfulness exercises using HTML, CSS, and JavaScript.</li>
+            <li>Responsive UI with CSS animations and timers, seamless across devices, no backend.</li>
+          </ul>
+          <div class="project-badges">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+          </div>
+        </div>
+        <!-- Student Finance Tracker -->
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-title">Student Finance Tracker</span>
+            <a href="https://anooragsingh07.github.io/Student-Finance-Tracker/" target="_blank" class="project-link" title="GitHub" aria-label="GitHub">
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+            </a>
+          </div>
+          <div class="project-desc">Student-focused finance tracker with real-time dashboards and budget insights.</div>
+          <ul class="project-bullets">
+            <li>Developed with HTML, CSS, JavaScript, and Chart.js for real-time dashboards and budget insights.</li>
+            <li>Transaction management, category filters, and localStorage-based data persistence for offline use.</li>
+          </ul>
+          <div class="project-badges">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Chart.js</span>
+          </div>
+        </div>
+        <!-- Landing Pages -->
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-title">Landing Pages</span>
+            <a href="https://github.com/anooragsingh07/Login-Page-using-Tailwind" target="_blank" class="project-link" title="GitHub" aria-label="GitHub">
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+            </a>
+          </div>
+          <div class="project-desc">Interactive landing pages using HTML, Tailwind CSS, and Bootstrap.</div>
+          <ul class="project-bullets">
+            <li>Designed and developed interactive landing pages using HTML, Tailwind CSS, and Bootstrap.</li>
+          </ul>
+          <div class="project-badges">
+            <span>HTML</span><span>Tailwind CSS</span><span>Bootstrap</span>
+          </div>
         </div>
       </div>
     </section>
