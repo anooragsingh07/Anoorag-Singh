@@ -398,18 +398,18 @@
       background: rgba(247,249,250,0.5);
     }
     #cmd-palette-modal {
-      background: var(--card);
+      background: #fff;
       color: var(--text);
       border-radius: 22px;
       box-shadow: 0 4px 32px 0 rgba(24,31,42,0.13);
-      border: 1.5px solid rgba(120,130,150,0.08);
+      border: 1.5px solid #e3eaf3;
       min-width: 340px;
       max-width: 540px;
       width: 100%;
-      padding: 24px 24px 12px 24px;
+      padding: 0;
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 0;
       animation: fadeInUp 0.25s;
       position: relative;
       margin: 32px 0;
@@ -417,8 +417,9 @@
       overflow-y: auto;
       scrollbar-width: none; /* Firefox */
     }
-    #cmd-palette-modal::-webkit-scrollbar {
-      display: none;
+    [ data-theme="dark" ] #cmd-palette-modal {
+      background: #232b3a;
+      border: 1.5px solid #2c3647;
     }
     @media (max-width: 600px) {
       #cmd-palette-modal {
@@ -436,6 +437,7 @@
       width: 100%;
       padding: 0;
       border-bottom: 1.5px solid #e3eaf3;
+      margin: 0;
     }
     #cmd-palette-input {
       padding-left: 48px;
