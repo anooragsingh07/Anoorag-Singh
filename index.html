@@ -90,6 +90,7 @@
       transition: color 0.2s;
       position: relative;
       padding: 2px 0;
+      background: none;
     }
     .nav-link.active, .nav-link:hover {
       color: var(--accent);
@@ -103,6 +104,17 @@
       width: 100%;
       margin-top: 6px;
       transition: width 0.2s, background 0.2s;
+      opacity: 1;
+    }
+    .nav-link:not(.active)::after {
+      content: '';
+      display: block;
+      height: 3px;
+      background: transparent;
+      border-radius: 2px;
+      width: 100%;
+      margin-top: 6px;
+      opacity: 0;
     }
     .nav-icons {
       display: flex;
