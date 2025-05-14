@@ -1235,22 +1235,28 @@
       copyEmail('copy-email-main-socials');
     });
     // Get in Touch Popup logic
-    const contactPopupOverlay = document.getElementById('contact-popup-overlay');
-    const contactPopupCard = document.getElementById('contact-popup-card');
-    document.getElementById('get-in-touch-btn').addEventListener('click', function(e) {
-      e.preventDefault();
-      contactPopupOverlay.style.display = 'flex';
-      setTimeout(() => { contactPopupCard.focus && contactPopupCard.focus(); }, 50);
-      document.body.style.overflow = 'hidden';
-    });
-    document.getElementById('contact-popup-close').addEventListener('click', function() {
-      contactPopupOverlay.style.display = 'none';
-      document.body.style.overflow = '';
-    });
-    contactPopupOverlay.addEventListener('mousedown', function(e) {
-      if (e.target === contactPopupOverlay) {
-        contactPopupOverlay.style.display = 'none';
-        document.body.style.overflow = '';
+    window.addEventListener('DOMContentLoaded', function() {
+      var contactPopupOverlay = document.getElementById('contact-popup-overlay');
+      var contactPopupCard = document.getElementById('contact-popup-card');
+      var getInTouchBtn = document.getElementById('get-in-touch-btn');
+      var contactPopupClose = document.getElementById('contact-popup-close');
+      if (getInTouchBtn && contactPopupOverlay && contactPopupCard && contactPopupClose) {
+        getInTouchBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          contactPopupOverlay.style.display = 'flex';
+          setTimeout(() => { contactPopupCard.focus && contactPopupCard.focus(); }, 50);
+          document.body.style.overflow = 'hidden';
+        });
+        contactPopupClose.addEventListener('click', function() {
+          contactPopupOverlay.style.display = 'none';
+          document.body.style.overflow = '';
+        });
+        contactPopupOverlay.addEventListener('mousedown', function(e) {
+          if (e.target === contactPopupOverlay) {
+            contactPopupOverlay.style.display = 'none';
+            document.body.style.overflow = '';
+          }
+        });
       }
     });
     // Copy contact info
