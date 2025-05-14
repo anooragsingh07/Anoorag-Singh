@@ -382,6 +382,8 @@
       flex-direction: column;
       gap: 28px;
       animation: fadeInUp 0.25s;
+      max-height: 80vh;
+      overflow-y: auto;
     }
     #cmd-palette-input {
       width: 100%;
@@ -1077,6 +1079,10 @@
         <div class="cmd-list">
           <button class="cmd-item" data-cmd="home"><i class="fas fa-home"></i> Home</button>
           <button class="cmd-item" data-cmd="projects"><i class="fas fa-code"></i> Projects</button>
+          <button class="cmd-item" data-cmd="experience"><i class="fas fa-briefcase"></i> Experience</button>
+          <button class="cmd-item" data-cmd="education"><i class="fas fa-graduation-cap"></i> Education</button>
+          <button class="cmd-item" data-cmd="skills"><i class="fas fa-cogs"></i> Skills</button>
+          <button class="cmd-item" data-cmd="about"><i class="fas fa-user"></i> About</button>
           <button class="cmd-item" data-cmd="resume"><i class="fas fa-file-alt"></i> Resume</button>
         </div>
       </div>
@@ -1228,6 +1234,10 @@
         closeCmdPalette();
         if (cmd === 'home') document.getElementById('home').scrollIntoView({behavior:'smooth'});
         if (cmd === 'projects') document.getElementById('projects').scrollIntoView({behavior:'smooth'});
+        if (cmd === 'experience') document.getElementById('experience').scrollIntoView({behavior:'smooth'});
+        if (cmd === 'education') document.getElementById('education').scrollIntoView({behavior:'smooth'});
+        if (cmd === 'skills') document.getElementById('skills').scrollIntoView({behavior:'smooth'});
+        if (cmd === 'about') document.getElementById('about').scrollIntoView({behavior:'smooth'});
         if (cmd === 'resume') alert('Resume download coming soon!');
         if (cmd === 'theme-dark') setTheme('dark');
         if (cmd === 'theme-light') setTheme('light');
