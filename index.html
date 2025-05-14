@@ -434,12 +434,24 @@
       background: inherit;
       z-index: 3;
       width: 100%;
-      margin-bottom: 8px;
-      padding-top: 4px;
-      padding-bottom: 8px;
+      padding: 0;
+      border-bottom: 1.5px solid #e3eaf3;
     }
     #cmd-palette-input {
       padding-left: 48px;
+      width: 100%;
+      border: none;
+      background: transparent;
+      color: #232b3a;
+      font-size: 1.18rem;
+      outline: none;
+      box-sizing: border-box;
+      margin: 0;
+      border-radius: 0;
+      transition: border 0.2s;
+    }
+    #cmd-palette-input:focus {
+      border: none;
     }
     .cmd-search-icon {
       position: absolute;
@@ -451,23 +463,6 @@
       color: #8ca0b3;
       pointer-events: none;
       z-index: 4;
-    }
-    #cmd-palette-input {
-      width: 100%;
-      padding: 16px 18px;
-      border-radius: 12px;
-      border: 2px solid #1976d2;
-      background: #f8fafc;
-      color: #222;
-      font-size: 1.15rem;
-      margin-bottom: 8px;
-      outline: none;
-      margin-top: -8px;
-      box-sizing: border-box;
-      transition: border 0.2s;
-    }
-    #cmd-palette-input:focus {
-      border-color: #1565c0;
     }
     .cmd-section {
       margin-bottom: 18px;
@@ -483,22 +478,27 @@
     .cmd-list {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 0;
     }
     .cmd-item {
       background: none;
       border: none;
-      color: #222;
+      color: #232b3a;
       text-align: left;
-      font-size: 1.13rem;
-      padding: 10px 0 10px 0;
-      border-radius: 10px;
+      font-size: 1.08rem;
+      padding: 12px 18px;
+      border-radius: 8px;
       cursor: pointer;
       transition: background 0.15s, color 0.15s;
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
       font-weight: 500;
+    }
+    .cmd-item:focus, .cmd-item:hover {
+      background: #f5f8fa;
+      color: #1976d2;
+      outline: none;
     }
     .cmd-item svg {
       width: 1.5em;
@@ -506,17 +506,10 @@
       stroke: #222;
       margin-right: 2px;
     }
-    .cmd-item:focus, .cmd-item:hover {
-      background: #f1f3f4;
-      color: #1976d2;
-      outline: none;
-    }
-    .cmd-item:focus svg, .cmd-item:hover svg {
-      stroke: #1976d2;
-    }
     [data-theme="dark"] #cmd-palette-modal {
       background: #232b3a;
       color: #e6eaf3;
+      border: 1.5px solid #2c3647;
     }
     [data-theme="dark"] #cmd-palette-input {
       background: #232b3a;
@@ -883,6 +876,25 @@
     .main > #home {
       margin-top: 60px;
     }
+    [data-theme="dark"] .cmd-divider {
+      border-top: 1.5px solid #2c3647;
+    }
+    [data-theme="dark"] .cmd-item:focus, [data-theme="dark"] .cmd-item:hover {
+      background: #263143;
+      color: #6DCEF9;
+    }
+    .cmd-divider {
+      border: none;
+      border-top: 1.5px solid #e3eaf3;
+      margin: 0 0 0 0;
+    }
+    .cmd-section-title {
+      color: #8ca0b3;
+      font-size: 0.98rem;
+      font-weight: 600;
+      margin: 18px 0 8px 18px;
+      letter-spacing: 0.01em;
+    }
   </style>
 </head>
 <body>
@@ -1165,6 +1177,7 @@
           <button class="cmd-item" data-cmd="resume"><i class="fas fa-file-alt"></i> Resume</button>
         </div>
       </div>
+      <hr class="cmd-divider">
       <div class="cmd-section">
         <div class="cmd-section-title">Themes</div>
         <div class="cmd-list">
