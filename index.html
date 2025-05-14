@@ -49,19 +49,22 @@
       transition: background 0.3s, color 0.3s;
       padding-top: 24px;
     }
+    .navbar, .main {
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 40px;
+      padding-right: 40px;
+    }
     .navbar {
       position: fixed;
       top: 24px;
       z-index: 100;
-      max-width: 900px;
-      left: 0;
-      right: 0;
-      margin-left: auto;
-      margin-right: auto;
+      border-radius: 22px;
       background: var(--nav-bg);
-      border-radius: 18px;
       box-shadow: var(--shadow);
-      padding: 16px 32px;
+      padding-top: 16px;
+      padding-bottom: 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -69,7 +72,7 @@
       transition: background 0.3s;
     }
     .navbar-spacer {
-      height: 60px;
+      height: 90px;
     }
     .nav-links {
       display: flex;
@@ -127,35 +130,38 @@
       z-index: 10;
     }
     .main {
-      max-width: 900px;
-      margin: 24px auto 0 auto;
-      padding: 0 16px 32px 16px;
+      margin-top: 0;
+      padding-top: 0;
+      padding-bottom: 40px;
     }
     .headline {
-      font-size: 2.1rem;
+      font-size: 2.5rem;
       font-weight: 700;
       color: var(--headline);
-      margin-bottom: 0.15em;
+      margin-bottom: 0.2em;
+      line-height: 1.1;
       animation: fadeInDown 0.7s;
     }
     .subtitle {
-      font-size: 1.08rem;
+      font-size: 1.25rem;
       color: var(--accent);
       font-weight: 600;
-      margin-bottom: 0.3em;
+      margin-bottom: 0.5em;
+      line-height: 1.2;
       animation: fadeInDown 0.9s;
     }
     .desc {
       color: var(--muted);
-      font-size: 1.01rem;
-      margin-bottom: 1.1em;
+      font-size: 1.08rem;
+      margin-bottom: 1.5em;
+      line-height: 1.6;
       max-width: 600px;
       animation: fadeIn 1.1s;
     }
     .btn-row {
       display: flex;
-      gap: 10px;
-      margin-bottom: 1.5em;
+      gap: 14px;
+      margin-bottom: 2em;
       align-items: center;
       animation: fadeIn 1.2s;
     }
@@ -416,15 +422,15 @@
       padding-bottom: 8px;
     }
     #cmd-palette-input {
-      padding-left: 60px;
+      padding-left: 40px;
     }
     .cmd-search-icon {
       position: absolute;
-      left: 28px;
+      left: 14px;
       top: 50%;
       transform: translateY(-50%);
-      width: 22px;
-      height: 22px;
+      width: 20px;
+      height: 20px;
       color: #8ca0b3;
       pointer-events: none;
       z-index: 4;
@@ -518,13 +524,14 @@
     }
     .main-socials {
       display: inline-flex;
-      gap: 6px;
+      gap: 10px;
       align-items: center;
-      margin-left: 10px;
+      margin-left: 12px;
+      vertical-align: middle;
     }
     .main-socials .icon-link svg {
-      width: 22px;
-      height: 22px;
+      width: 24px;
+      height: 24px;
       vertical-align: middle;
     }
     .projects-section {
