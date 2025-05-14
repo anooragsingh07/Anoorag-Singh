@@ -373,22 +373,51 @@
       background: var(--card);
       color: var(--text);
       border-radius: 22px;
-      box-shadow: 0 8px 48px 0 rgba(24,31,42,0.18);
+      box-shadow: 0 4px 32px 0 rgba(24,31,42,0.13);
+      border: 1.5px solid rgba(120,130,150,0.08);
       min-width: 340px;
       max-width: 540px;
       width: 100%;
-      padding: 32px 32px 18px 32px;
+      padding: 24px 24px 12px 24px;
       display: flex;
       flex-direction: column;
       gap: 24px;
       animation: fadeInUp 0.25s;
       position: relative;
       margin: 32px 0;
-      max-height: 80vh;
+      max-height: 70vh;
       overflow-y: auto;
+      scrollbar-width: none; /* Firefox */
+    }
+    #cmd-palette-modal::-webkit-scrollbar {
+      display: none;
     }
     @media (max-width: 600px) {
-      #cmd-palette-modal { min-width: 90vw; max-width: 98vw; padding: 12px 4px; margin: 12px 0; }
+      #cmd-palette-modal {
+        min-width: 90vw;
+        max-width: 98vw;
+        padding: 12px 4px;
+        margin: 16px 0;
+      }
+    }
+    .cmd-search-wrapper {
+      position: relative;
+      width: 100%;
+      margin-bottom: 8px;
+    }
+    #cmd-palette-input {
+      padding-left: 44px;
+    }
+    .cmd-search-icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 22px;
+      height: 22px;
+      color: #8ca0b3;
+      pointer-events: none;
+      z-index: 2;
     }
     #cmd-palette-input {
       width: 100%;
@@ -1078,7 +1107,10 @@
   <!-- Command Palette Modal -->
   <div id="cmd-palette-overlay" tabindex="-1" style="display:none;">
     <div id="cmd-palette-modal" role="dialog" aria-modal="true" aria-labelledby="cmd-palette-title">
-      <input id="cmd-palette-input" type="text" placeholder="Type a command or search..." aria-label="Command search" autocomplete="off" />
+      <div class="cmd-search-wrapper">
+        <svg class="cmd-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input id="cmd-palette-input" type="text" placeholder="Type a command or search..." aria-label="Command search" autocomplete="off" />
+      </div>
       <div class="cmd-section">
         <div class="cmd-section-title">Navigation</div>
         <div class="cmd-list">
