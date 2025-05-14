@@ -97,12 +97,12 @@
     .nav-link.active::after {
       content: '';
       display: block;
-      height: 2px;
+      height: 3px;
       background: var(--accent);
       border-radius: 2px;
       width: 100%;
-      margin-top: 2px;
-      transition: width 0.2s;
+      margin-top: 6px;
+      transition: width 0.2s, background 0.2s;
     }
     .nav-icons {
       display: flex;
@@ -868,6 +868,9 @@
     [data-theme="dark"] .about-section strong, [data-theme="dark"] .about-section b, [data-theme="dark"] .about-bold {
       color: #fff;
     }
+    .main > #home {
+      margin-top: 60px;
+    }
   </style>
 </head>
 <body>
@@ -1213,16 +1216,20 @@
         const href = this.getAttribute('href');
         if (href.startsWith('#')) {
           e.preventDefault();
-          document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+          if (href === '#home') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          } else {
+            document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+          }
         }
       });
     });
     window.addEventListener('scroll', () => {
-      const sections = ['home','projects','experience','education','skills'];
+      const sections = ['home','projects','experience','education','skills','about'];
       let found = false;
       for (let id of sections) {
         const sec = document.getElementById(id);
-        if (sec && window.scrollY + 120 >= sec.offsetTop) {
+        if (sec && window.scrollY + 180 >= sec.offsetTop) {
           navLinks.forEach(l => l.classList.remove('active'));
           const nav = document.getElementById('nav-' + id);
           if (nav) nav.classList.add('active');
@@ -1375,4 +1382,3 @@
   </script>
 </body>
 </html>
-ritten_file>
