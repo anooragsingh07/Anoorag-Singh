@@ -401,23 +401,28 @@
       }
     }
     .cmd-search-wrapper {
-      position: relative;
+      position: sticky;
+      top: 0;
+      background: inherit;
+      z-index: 3;
       width: 100%;
       margin-bottom: 8px;
+      padding-top: 4px;
+      padding-bottom: 8px;
     }
     #cmd-palette-input {
-      padding-left: 44px;
+      padding-left: 60px;
     }
     .cmd-search-icon {
       position: absolute;
-      left: 16px;
+      left: 28px;
       top: 50%;
       transform: translateY(-50%);
       width: 22px;
       height: 22px;
       color: #8ca0b3;
       pointer-events: none;
-      z-index: 2;
+      z-index: 4;
     }
     #cmd-palette-input {
       width: 100%;
