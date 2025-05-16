@@ -474,6 +474,62 @@
     [data-theme="dark"] .blog-item b, [data-theme="dark"] .blog-item strong {
       color: #fff;
     }
+    .blog-section {
+      margin-top: 24px;
+      margin-bottom: 32px;
+    }
+    .blog-list {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      margin-top: 18px;
+    }
+    .blog-item {
+      background: var(--card);
+      border-radius: 10px;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.10);
+      padding: 32px 32px 24px 32px;
+      margin-bottom: 0;
+      border: 1px solid var(--border);
+      position: relative;
+      transition: box-shadow 0.2s;
+    }
+    .blog-item:hover {
+      box-shadow: 0 4px 24px rgba(109,206,249,0.13);
+    }
+    .blog-title, .blog-item a {
+      color: var(--accent) !important;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .blog-title:hover, .blog-item a:hover {
+      color: #1976d2;
+      text-decoration: underline;
+    }
+    .blog-meta {
+      color: var(--muted);
+      font-size: 0.98rem;
+      margin-bottom: 6px;
+    }
+    .blog-summary {
+      font-size: 1.01rem;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+    [data-theme="dark"] .blog-item {
+      background: #232b3a;
+      color: #e6eaf3;
+      box-shadow: 0 2px 16px 0 rgba(0,0,0,0.13);
+    }
+    [data-theme="dark"] .blog-title {
+      color: #6dcef9;
+    }
+    [data-theme="dark"] .blog-meta {
+      color: #8ca0b3;
+    }
+    [data-theme="dark"] .blog-summary {
+      color: #bfc9d1;
+    }
   </style>
 </head>
 <body>
@@ -484,7 +540,7 @@
       <a href="index.html#projects" class="nav-link" id="nav-projects">Projects</a>
       <a href="index.html#education" class="nav-link" id="nav-education">Education</a>
       <a href="index.html#skills" class="nav-link" id="nav-skills">Skills</a>
-      <a href="#about" class="nav-link" id="nav-about">About</a>
+      <a href="index.html#about" class="nav-link" id="nav-about">About</a>
       <a href="blog.html" class="nav-link active" id="nav-blog">Blog</a>
     </div>
     <div class="nav-icons">
@@ -671,6 +727,17 @@
       const val = cmdInput.value.toLowerCase();
       cmdItems.forEach(btn => {
         btn.style.display = btn.textContent.toLowerCase().includes(val) ? '' : 'none';
+      });
+    });
+    // Fix navigation to other sections from blog page
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href.startsWith('index.html#')) {
+          e.preventDefault();
+          window.location.href = href;
+        }
       });
     });
   </script>
