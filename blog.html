@@ -105,29 +105,12 @@
       padding: 2px 0;
       background: none;
     }
-    .nav-link.active, .nav-link:hover {
+    .nav-link:hover, .nav-link.active {
       color: var(--accent);
     }
-    .nav-link.active::after {
-      content: '';
-      display: block;
-      height: 3px;
+    .nav-link:hover::after {
       background: var(--accent);
-      border-radius: 2px;
-      width: 100%;
-      margin-top: 6px;
-      transition: width 0.2s, background 0.2s;
       opacity: 1;
-    }
-    .nav-link:not(.active)::after {
-      content: '';
-      display: block;
-      height: 3px;
-      background: transparent;
-      border-radius: 2px;
-      width: 100%;
-      margin-top: 6px;
-      opacity: 0;
     }
     .nav-icons {
       display: flex;
@@ -545,11 +528,11 @@
   <nav class="navbar" role="navigation" aria-label="Main Navigation">
     <div class="nav-links">
       <a href="index.html#home" class="nav-link" id="nav-home">Home</a>
-      <a href="index.html#projects" class="nav-link" id="nav-projects">Projects</a>
       <a href="index.html#education" class="nav-link" id="nav-education">Education</a>
+      <a href="index.html#projects" class="nav-link" id="nav-projects">Projects</a>
       <a href="index.html#skills" class="nav-link" id="nav-skills">Skills</a>
-      <a href="index.html#about" class="nav-link" id="nav-about">About</a>
       <a href="blog.html" class="nav-link active" id="nav-blog">Blog</a>
+      <a href="index.html#about" class="nav-link" id="nav-about">About</a>
     </div>
     <div class="nav-icons">
       <a href="https://github.com/anooragsingh07" target="_blank" title="GitHub" class="icon-link" aria-label="GitHub">
@@ -581,7 +564,7 @@
         <div class="blog-item" id="blog-cpu-schedsim">
           <a href="#" class="blog-title">Simulating CPU Scheduling Algorithms with C++</a>
           <div class="blog-meta">6/10/2024 • 8 min read</div>
-          <div class="blog-summary">Understanding Operating Systems became much easier after I built CPU-SchedSim, a C++-based simulator for analyzing the behavior of different CPU scheduling algorithms. These are vital for efficient process management in modern OSes.<br><br><b>Algorithms Implemented:</b> FCFS, SJF, Round-Robin, Priority Scheduling<br><b>Features:</b> Context switching, preemption, adjustable time slices, exponential arrival, detailed metrics.<br><br>This project helped me deeply understand how scheduling decisions affect CPU utilization and system responsiveness.<br><b>Resources:</b> GeeksforGeeks, TutorialsPoint, cplusplus.com<br><a href="https://github.com/anooragsingh07/CPU-SchedSim--CPU-Scheduling-Simulator-" target="_blank">GitHub: CPU-SchedSim</a> | <a href="#" target="_blank">Live Demo</a></div>
+          <div class="blog-summary">Understanding Operating Systems became much easier after I built CPU-SchedSim, a C++-based simulator for analyzing the behavior of different CPU scheduling algorithms. These are vital for efficient process management in modern OSes.<br><br><b>Algorithms Implemented:</b> FCFS, SJF, Round-Robin, Priority Scheduling<br><b>Features:</b> Context switching, preemption, adjustable time slices, exponential arrival, detailed metrics.<br><br>This project helped me deeply understand how scheduling decisions affect CPU utilization and system responsiveness.<br><b>Resources:</b> GeeksforGeeks, TutorialsPoint, cplusplus.com<br><a href="https://github.com/anooragsingh07/CPU-SchedSim--CPU-Scheduling-Simulator-" target="_blank">GitHub</a> | <a href="https://anooragsingh07.github.io/CPU-SchedSim--CPU-Scheduling-Simulator-/" target="_blank">Live Demo</a></div>
         </div>
         <div class="blog-item" id="blog-cpp-love">
           <a href="#" class="blog-title">Why I Love Coding in C++</a>
@@ -596,12 +579,12 @@
         <div class="blog-item" id="blog-mindminute">
           <a href="#" class="blog-title">MindMinute – One Minute to Mindfulness</a>
           <div class="blog-meta">4/30/2024 • 4 min read</div>
-          <div class="blog-summary">As students or developers, it's easy to forget to take care of our mental health. That's why I built MindMinute, a web app focused on 1-minute mindfulness breaks, using only HTML, CSS, and JavaScript.<br><br><b>Features:</b> Breathing/stretching exercises, meditation prompts, animated timers, offline support.<br><br>This project taught me the value of building lightweight, accessible tools with minimal dependencies.<br><b>Resources:</b> MDN, Mindfulness Techniques<br><a href="https://github.com/anooragsingh07/Mind-Minute" target="_blank">GitHub: MindMinute</a> | <a href="#" target="_blank">Live Demo</a></div>
+          <div class="blog-summary">As students or developers, it's easy to forget to take care of our mental health. That's why I built MindMinute, a web app focused on 1-minute mindfulness breaks, using only HTML, CSS, and JavaScript.<br><br><b>Features:</b> Breathing/stretching exercises, meditation prompts, animated timers, offline support.<br><br>This project taught me the value of building lightweight, accessible tools with minimal dependencies.<br><b>Resources:</b> MDN, Mindfulness Techniques<br><a href="https://github.com/anooragsingh07/Mind-Minute" target="_blank">GitHub</a> | <a href="https://anooragsingh07.github.io/Mind-Minute/" target="_blank">Live Demo</a></div>
         </div>
         <div class="blog-item" id="blog-finance-tracker">
           <a href="#" class="blog-title">Learning Finance Through Code – Student Finance Tracker</a>
           <div class="blog-meta">4/10/2024 • 6 min read</div>
-          <div class="blog-summary">Managing personal expenses can be tough for students. I solved this with the Student Finance Tracker, a smart, student-friendly budgeting tool built using HTML, CSS, JavaScript, and Chart.js.<br><br><b>Features:</b> Add/delete/filter transactions, category breakdown, responsive charts, offline support.<br><br>This project helped me master DOM manipulation, event handling, and working with Chart.js.<br><b>Resources:</b> Chart.js, MDN, NerdWallet<br><a href="https://anooragsingh07.github.io/Student-Finance-Tracker/" target="_blank">GitHub: Student Finance Tracker</a> | <a href="#" target="_blank">Live Demo</a></div>
+          <div class="blog-summary">Managing personal expenses can be tough for students. I solved this with the Student Finance Tracker, a smart, student-friendly budgeting tool built using HTML, CSS, JavaScript, and Chart.js.<br><br><b>Features:</b> Add/delete/filter transactions, category breakdown, responsive charts, offline support.<br><br>This project helped me master DOM manipulation, event handling, and working with Chart.js.<br><b>Resources:</b> Chart.js, MDN, NerdWallet<br><a href="https://github.com/anooragsingh07/Student-Finance-Tracker/" target="_blank">GitHub</a> | <a href="https://anooragsingh07.github.io/Student-Finance-Tracker/" target="_blank">Live Demo</a></div>
         </div>
       </div>
     </section>
