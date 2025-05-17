@@ -1083,11 +1083,33 @@
       border: 1.5px solid rgba(109,206,249,0.15);
     }
     [data-theme="dark"] #contact-popup-card {
-      background: rgba(35,43,58,0.75);
+      background: rgba(35,43,58,0.92); /* Increase opacity for better contrast */
+      color: #e6eaf3; /* Lighter text for dark mode */
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
       box-shadow: 0 12px 48px 0 rgba(0,0,0,0.28), 0 0 0 8px rgba(109,206,249,0.13);
       border: 1.5px solid rgba(109,206,249,0.15);
+    }
+    [data-theme="dark"] #contact-popup-card .contact-label {
+      color: #bfc9d1;
+    }
+    [data-theme="dark"] #contact-popup-card .contact-value {
+      background: #232b3a;
+      color: #e6eaf3;
+    }
+    [data-theme="dark"] #contact-popup-card .icon-link svg {
+      color: #bfc9d1;
+    }
+    [data-theme="dark"] #contact-popup-card .icon-link:hover svg {
+      color: #6dcef9;
+    }
+    [data-theme="dark"] #contact-popup-card .copy-btn {
+      background: #263143;
+      color: #6dcef9;
+    }
+    [data-theme="dark"] #contact-popup-card .copy-btn:hover {
+      background: #6dcef9;
+      color: #232b3a;
     }
     // ... existing code ...
     // Add JS to make About section's 'Get in Touch' button open the contact popup
