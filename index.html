@@ -131,6 +131,17 @@
       transition: width 0.2s, background 0.2s;
       opacity: 1;
     }
+    .nav-link.active::after {
+      content: '';
+      display: block;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+      width: 100%;
+      margin-top: 6px;
+      opacity: 1;
+      transition: width 0.2s, background 0.2s;
+    }
     .nav-link:not(.active)::after {
       content: '';
       display: block;
@@ -1110,6 +1121,11 @@
     [data-theme="dark"] #contact-popup-card .copy-btn:hover {
       background: #6dcef9;
       color: #232b3a;
+    }
+    [data-theme="dark"] .skill-block {
+      background: #223042;
+      color: #7fd6ff;
+      font-weight: 700;
     }
   </style>
 </head>
