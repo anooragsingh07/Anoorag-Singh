@@ -158,7 +158,7 @@
       display: flex;
       gap: 18px;
       align-items: center;
-      margin-left: 18px;
+      margin-left: 0;
     }
     .nav-icons a {
       color: var(--muted);
@@ -183,6 +183,87 @@
       white-space: nowrap;
       box-shadow: 0 2px 8px rgba(0,0,0,0.12);
       z-index: 10;
+    }
+    .navbar-mobile-header {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      gap: 12px;
+    }
+    .navbar-compact-tools {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .navbar-compact-tools .theme-toggle {
+      margin-left: 0;
+    }
+    .nav-collapsible {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-width: 0;
+    }
+    .nav-desktop-tools {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .nav-desktop-tools .theme-toggle {
+      margin-left: 0;
+    }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-shrink: 0;
+      margin-left: auto;
+    }
+    .nav-menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border: none;
+      border-radius: 12px;
+      background: var(--badge);
+      color: var(--badge-text);
+      cursor: pointer;
+      flex-shrink: 0;
+      -webkit-tap-highlight-color: transparent;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-menu-toggle:hover,
+    .nav-menu-toggle:focus-visible {
+      outline: none;
+      background: var(--accent);
+      color: #fff;
+    }
+    .nav-menu-bar {
+      display: block;
+      width: 22px;
+      height: 2px;
+      margin: 0 auto;
+      background: currentColor;
+      border-radius: 1px;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    .navbar.is-open .nav-menu-bar:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .navbar.is-open .nav-menu-bar:nth-child(2) {
+      opacity: 0;
+    }
+    .navbar.is-open .nav-menu-bar:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
     }
     .main {
       margin-top: 0;
@@ -390,6 +471,21 @@
       margin-left: 10px;
       margin-top: 2px;
       gap: 4px;
+      font: inherit;
+      font-family: inherit;
+      border: none;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      transition: background 0.2s, color 0.2s;
+    }
+    .kbd-hint:hover,
+    .kbd-hint:focus-visible {
+      outline: none;
+      filter: brightness(1.08);
+    }
+    .navbar-compact-tools .kbd-hint {
+      margin-left: 0;
+      margin-top: 0;
     }
     .theme-toggle {
       background: #f6f7f9;
@@ -434,16 +530,154 @@
     .icon-link:hover svg {
       color: var(--accent);
     }
-    @media (max-width: 700px) {
+    @media (max-width: 900px) {
       .navbar {
         top: 8px;
-        border-radius: 12px;
+        border-radius: 14px;
         margin: 8px auto 0 auto;
-        padding: 8px 4px;
+        padding: 10px 14px 12px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
       }
-      .navbar, .main { max-width: 100%; padding: 0 4px; }
-      .navbar { flex-direction: column; gap: 10px; align-items: flex-start; }
-      .btn-row { flex-direction: column; gap: 10px; }
+      .navbar-mobile-header {
+        display: flex;
+      }
+      .nav-menu-toggle {
+        display: inline-flex;
+      }
+      .nav-collapsible {
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        gap: 0;
+        padding-top: 14px;
+        margin-top: 12px;
+        border-top: 1px solid var(--border);
+      }
+      .navbar.is-open .nav-collapsible {
+        display: flex;
+      }
+      .nav-links {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        width: 100%;
+      }
+      .nav-link {
+        padding: 12px 4px;
+        border-radius: 8px;
+      }
+      .nav-link:hover {
+        background: rgba(109, 206, 249, 0.08);
+      }
+      .nav-link::after,
+      .nav-link:not(.active)::after {
+        display: none !important;
+      }
+      .nav-desktop-tools {
+        display: none;
+      }
+      .nav-right {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        width: 100%;
+        margin-left: 0;
+      }
+      .nav-icons {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        margin-left: 0;
+        padding-top: 14px;
+        margin-top: 8px;
+        border-top: 1px solid var(--border);
+        gap: 14px;
+      }
+      .navbar, .main {
+        max-width: 100%;
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+      .kbd-hint-text {
+        display: none;
+      }
+      .navbar-compact-tools .kbd-hint {
+        padding: 8px 10px;
+      }
+      .main > #home {
+        margin-top: 100px;
+      }
+      #home, #projects, #experience, #education, #skills, #about {
+        scroll-margin-top: 108px;
+      }
+      .headline {
+        font-size: clamp(1.45rem, 6vw, 2.1rem);
+        line-height: 1.15;
+      }
+      .subtitle {
+        font-size: 1.05rem;
+      }
+      .btn-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+      }
+      .btn-row .btn {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        min-width: 0;
+      }
+      .main-socials {
+        display: none;
+      }
+      .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .project-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .project-header > span:last-child {
+        align-self: flex-end;
+      }
+      .recent-article {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+      }
+      .recent-meta {
+        margin-left: 0;
+        white-space: normal;
+      }
+      .card {
+        display: flex;
+        flex-direction: column;
+        padding: 18px 16px 16px;
+      }
+      .card-title {
+        order: 1;
+        font-size: 1.05rem;
+        line-height: 1.35;
+        padding-right: 0;
+      }
+      .card-meta {
+        order: 2;
+      }
+      .card-date {
+        position: static;
+        order: 3;
+        align-self: flex-start;
+        margin: 8px 0 0;
+      }
+      .card ul {
+        order: 4;
+        margin-left: 1.1rem;
+      }
       body {
         padding-top: 8px;
       }
@@ -1194,37 +1428,60 @@
 </head>
 <body>
   <div class="navbar-spacer"></div>
-  <nav class="navbar" role="navigation" aria-label="Main Navigation">
-    <div class="nav-links">
-      <a href="#home" class="nav-link active" id="nav-home">Home</a>
-      <a href="#education" class="nav-link" id="nav-education">Education</a>
-      <a href="#projects" class="nav-link" id="nav-projects">Projects</a>
-      <!--<a href="#experience" class="nav-link" id="nav-experience">Experience</a>-->
-      <a href="#skills" class="nav-link" id="nav-skills">Skills</a>
-      <a href="blog.html" class="nav-link" id="nav-blog">Blog</a>
-      <a href="#about" class="nav-link" id="nav-about">About</a>
-    </div>
-    <div class="nav-icons">
-      <a href="https://github.com/anooragsingh07" target="_blank" title="GitHub" class="icon-link" aria-label="GitHub">
-        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
-      </a>
-      <a href="https://www.linkedin.com/in/anooragsingh/" target="_blank" title="LinkedIn" class="icon-link" aria-label="LinkedIn">
-        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path></svg>
-      </a>
-      <a href="https://x.com/code_anoorag" target="_blank" title="X" class="icon-link" aria-label="X">
-        <svg width="20" height="20" viewBox="0 0 120 120" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <path d="M87.6 10H110.4L72.8 56.2L117.6 110H82.2L53.6 75.6L21.6 110H-1.2L39.2 60.6L-3.2 10H33.2L59.2 41.2L87.6 10ZM81.2 100.2H91.2L32.8 19.2H22.2L81.2 100.2Z"/>
-        </svg>
-      </a>
-      <a href="mailto:anooragsingh0007@gmail.com" title="Email" class="icon-link" aria-label="Email" id="copy-email-navbar">
-        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6.5 12 13 2 6.5"/></svg>
-      </a>
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode">
-        <span id="theme-icon"></span>
+  <nav class="navbar" id="site-nav" role="navigation" aria-label="Main Navigation">
+    <div class="navbar-mobile-header">
+      <button type="button" class="nav-menu-toggle" id="nav-menu-toggle" aria-expanded="false" aria-controls="nav-collapsible" aria-label="Open menu">
+        <span class="nav-menu-bar"></span>
+        <span class="nav-menu-bar"></span>
+        <span class="nav-menu-bar"></span>
       </button>
-      <span class="kbd-hint" title="Keyboard shortcut">
-        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" style="vertical-align:middle;"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="M10 8h.01M12 12h.01M14 8h.01M16 12h.01M18 8h.01M6 8h.01M7 16h10M8 12h.01"></path></svg> Ctrl + K
-      </span>
+      <div class="navbar-compact-tools">
+        <button type="button" class="theme-toggle" aria-label="Toggle dark/light mode">
+          <span class="theme-icon"></span>
+        </button>
+        <button type="button" class="kbd-hint nav-cmd-open" title="Command palette (Ctrl+K)" aria-label="Open command palette">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" style="vertical-align:middle;"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="M10 8h.01M12 12h.01M14 8h.01M16 12h.01M18 8h.01M6 8h.01M7 16h10M8 12h.01"></path></svg>
+          <span class="kbd-hint-text">Ctrl + K</span>
+        </button>
+      </div>
+    </div>
+    <div class="nav-collapsible" id="nav-collapsible">
+      <div class="nav-links">
+        <a href="#home" class="nav-link active" id="nav-home">Home</a>
+        <a href="#education" class="nav-link" id="nav-education">Education</a>
+        <a href="#projects" class="nav-link" id="nav-projects">Projects</a>
+        <!--<a href="#experience" class="nav-link" id="nav-experience">Experience</a>-->
+        <a href="#skills" class="nav-link" id="nav-skills">Skills</a>
+        <a href="blog.html" class="nav-link" id="nav-blog">Blog</a>
+        <a href="#about" class="nav-link" id="nav-about">About</a>
+      </div>
+      <div class="nav-right">
+        <div class="nav-icons">
+          <a href="https://github.com/anooragsingh07" target="_blank" title="GitHub" class="icon-link" aria-label="GitHub">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/anooragsingh/" target="_blank" title="LinkedIn" class="icon-link" aria-label="LinkedIn">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path></svg>
+          </a>
+          <a href="https://x.com/code_anoorag" target="_blank" title="X" class="icon-link" aria-label="X">
+            <svg width="20" height="20" viewBox="0 0 120 120" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M87.6 10H110.4L72.8 56.2L117.6 110H82.2L53.6 75.6L21.6 110H-1.2L39.2 60.6L-3.2 10H33.2L59.2 41.2L87.6 10ZM81.2 100.2H91.2L32.8 19.2H22.2L81.2 100.2Z"/>
+            </svg>
+          </a>
+          <a href="mailto:anooragsingh0007@gmail.com" title="Email" class="icon-link" aria-label="Email" id="copy-email-navbar">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6.5 12 13 2 6.5"/></svg>
+          </a>
+        </div>
+        <div class="nav-desktop-tools">
+          <button type="button" class="theme-toggle" aria-label="Toggle dark/light mode">
+            <span class="theme-icon"></span>
+          </button>
+          <button type="button" class="kbd-hint nav-cmd-open" title="Command palette (Ctrl+K)" aria-label="Open command palette">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" style="vertical-align:middle;"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="M10 8h.01M12 12h.01M14 8h.01M16 12h.01M18 8h.01M6 8h.01M7 16h10M8 12h.01"></path></svg>
+            <span class="kbd-hint-text">Ctrl + K</span>
+          </button>
+        </div>
+      </div>
     </div>
   </nav>
   <main class="main">
@@ -1536,23 +1793,24 @@
   </div>
   <script>
     // Theme toggle with persistence
-    const themeToggle = document.getElementById('theme-toggle');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     function setTheme(theme) {
       document.documentElement.setAttribute('data-theme', theme);
       localStorage.setItem('theme', theme);
-      const themeIcon = document.getElementById('theme-icon');
-      if (theme === 'dark') {
-        themeIcon.innerHTML = `<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>`;
-      } else {
-        themeIcon.innerHTML = `<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="14" cy="14" r="5" fill="none" stroke="#f7b500" stroke-width="2.2"/><g stroke="#f7b500" stroke-width="2.2" stroke-linecap="round"><line x1="14" y1="6" x2="14" y2="3.5"/><line x1="14" y1="22" x2="14" y2="24.5"/><line x1="6" y1="14" x2="3.5" y2="14"/><line x1="22" y1="14" x2="24.5" y2="14"/><line x1="8.22" y1="8.22" x2="6.4" y2="6.4"/><line x1="19.78" y1="8.22" x2="21.6" y2="6.4"/><line x1="8.22" y1="19.78" x2="6.4" y2="21.6"/><line x1="19.78" y1="19.78" x2="21.6" y2="21.6"/></g></svg>`;
-      }
+      const darkIcon = `<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>`;
+      const lightIcon = `<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="14" cy="14" r="5" fill="none" stroke="#f7b500" stroke-width="2.2"/><g stroke="#f7b500" stroke-width="2.2" stroke-linecap="round"><line x1="14" y1="6" x2="14" y2="3.5"/><line x1="14" y1="22" x2="14" y2="24.5"/><line x1="6" y1="14" x2="3.5" y2="14"/><line x1="22" y1="14" x2="24.5" y2="14"/><line x1="8.22" y1="8.22" x2="6.4" y2="6.4"/><line x1="19.78" y1="8.22" x2="21.6" y2="6.4"/><line x1="8.22" y1="19.78" x2="6.4" y2="21.6"/><line x1="19.78" y1="19.78" x2="21.6" y2="21.6"/></g></svg>`;
+      const html = theme === 'dark' ? darkIcon : lightIcon;
+      document.querySelectorAll('.theme-icon').forEach(function(el) {
+        el.innerHTML = html;
+      });
     }
     function toggleTheme() {
       const current = document.documentElement.getAttribute('data-theme') || (prefersDark ? 'dark' : 'light');
       setTheme(current === 'dark' ? 'light' : 'dark');
     }
-    themeToggle.addEventListener('click', toggleTheme);
+    document.querySelectorAll('.theme-toggle').forEach(function(btn) {
+      btn.addEventListener('click', toggleTheme);
+    });
     // On load
     (function() {
       const saved = localStorage.getItem('theme');
@@ -1560,9 +1818,38 @@
       else setTheme(prefersDark ? 'dark' : 'light');
     })();
     // Smooth scroll and nav active
+    const siteNav = document.getElementById('site-nav');
+    const navMenuToggle = document.getElementById('nav-menu-toggle');
+    function closeMobileNav() {
+      if (!siteNav || !navMenuToggle) return;
+      siteNav.classList.remove('is-open');
+      navMenuToggle.setAttribute('aria-expanded', 'false');
+      navMenuToggle.setAttribute('aria-label', 'Open menu');
+    }
+    function toggleMobileNav() {
+      if (!siteNav || !navMenuToggle) return;
+      const open = !siteNav.classList.contains('is-open');
+      siteNav.classList.toggle('is-open', open);
+      navMenuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      navMenuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    }
+    if (navMenuToggle) {
+      navMenuToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleMobileNav();
+      });
+    }
+    document.addEventListener('click', function(e) {
+      if (!siteNav || !siteNav.classList.contains('is-open')) return;
+      if (!siteNav.contains(e.target)) closeMobileNav();
+    });
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 900) closeMobileNav();
+    });
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
       link.addEventListener('click', function(e) {
+        closeMobileNav();
         const href = this.getAttribute('href');
         if (href.startsWith('#')) {
           e.preventDefault();
@@ -1588,12 +1875,8 @@
       }
       if (!found) navLinks.forEach(l => l.classList.remove('active'));
     });
-    // Keyboard shortcut Ctrl+K to focus nav
     document.addEventListener('keydown', function(e) {
-      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
-        e.preventDefault();
-        navLinks[0].focus();
-      }
+      if (e.key === 'Escape') closeMobileNav();
     });
     // Animate cards on scroll
     function animateCards() {
@@ -1624,6 +1907,12 @@
       if (lastFocused) lastFocused.focus();
       document.body.style.overflow = '';
     }
+    document.querySelectorAll('.nav-cmd-open').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        closeMobileNav();
+        openCmdPalette();
+      });
+    });
     document.addEventListener('keydown', function(e) {
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
         e.preventDefault();
