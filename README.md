@@ -1,16 +1,14 @@
-# Anoorag Singh - Portfolio
+# Anoorag Singh — Portfolio
 
 This is the personal portfolio website of Anoorag Singh, showcasing projects, skills, education, and contact information.
 
 ## Features
-- Modern, responsive design
-- Dark/Light mode toggle
-- Animated project cards
-- Sticky navigation bar with frosted glass effect
-- Social media and contact links
-- Command palette (Ctrl+K)
-- Resume modal popup
-- Blog section
+- Responsive editorial portfolio with light and dark themes
+- Interactive profile cards, project previews, and a Ctrl+K command palette
+- On-page résumé viewer with download and Google Drive options
+- Floating developer status widget with optional public GitHub repository metadata
+- Five full article pages and a writing archive
+- Static HTML, CSS, and JavaScript; no framework build step
 
 ## Getting Started
 
@@ -28,11 +26,23 @@ This is the personal portfolio website of Anoorag Singh, showcasing projects, sk
    ```
    Then visit [http://localhost:8000](http://localhost:8000)
 
-## Deployment
-This site is deployed using [GitHub Pages](https://pages.github.com/). To deploy your own version:
-- Push changes to the `main` branch.
-- Ensure all static assets (including `resume/Resume.pdf` and images) are committed.
-- Visit `https://<your-username>.github.io/Anoorag-Singh/` to view the site.
+## GitHub Pages deployment
+
+The workflow in `.github/workflows/pages.yml` deploys the repository root when changes are pushed to `main`. In repository settings, set **Pages → Build and deployment → Source** to **GitHub Actions**, then set **Custom domain** to `anoorag.tech`. The repository already has a root `CNAME` file; GitHub Pages requires the custom domain to be configured in settings for an Actions deployment.
+
+The published site uses the files at the root directly, including `index.html`, `blog.html`, the `blog/` article pages, `portfolio-enhancements.css`, `portfolio-enhancements.js`, the résumé PDF, and the avatar images. There is no install or build command.
+
+## Developer status widget
+
+The widget is implemented in `developer-status.js` and `developer-status.css` and is included on the home page, writing archive, and article pages. Edit the `developerConfig` object near the top of `developer-status.js` to update your name, role, availability, current project, technologies, or GitHub username. The current project fields are placeholders until you add the project you are actively working on. GitHub requests use the public REST API without a token; the widget caches the latest public repository metadata in local storage for 30 minutes and shows a profile link if the API is disabled or unavailable. Repository update dates are metadata only and do not represent all coding activity.
+
+For local viewing, open `index.html` in a browser or run:
+
+```bash
+python -m http.server 8000
+```
+
+Then visit [http://localhost:8000](http://localhost:8000).
 
 ## License
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details. 
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Learning Finance Through Code · Anoorag Singh</title>
+  <link rel="icon" type="image/png" href="../astronaut_avatar.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../portfolio-enhancements.css">
+  <link rel="stylesheet" href="../developer-status.css">
+</head>
+<body class="article-page">
+  <nav class="navbar article-nav" aria-label="Article navigation"><a class="brand-name" href="../index.html#home"><span class="brand-monogram">AS</span><span>Anoorag Singh</span></a><div class="nav-right"><a class="nav-link" href="../blog.html">All writing</a><button class="theme-toggle" type="button" aria-label="Toggle dark/light mode"><span class="theme-icon">◐</span></button><button class="kbd-hint nav-cmd-open" type="button" aria-label="Open command palette">Ctrl + K</button></div></nav>
+  <main class="main">
+    <header class="article-header"><p class="article-kicker">Project notes · Finance · JavaScript</p><h1>Learning Finance Through Code — Student Finance Tracker</h1><p class="article-meta">April 10, 2024 · 6 min read</p><p class="article-lede">Tracking spending is easier when transactions and category totals are visible together. This project turns that idea into a small budgeting tool for students.</p></header>
+    <article class="article-body">
+      <p>Managing personal expenses can be difficult when purchases are scattered across memory or notes. I built the Student Finance Tracker as a student-focused way to record transactions and see how spending adds up.</p>
+      <h2>From a transaction list to a picture</h2>
+      <p>The tracker supports adding and deleting transactions, filtering entries, and grouping activity by category. A dashboard presents category breakdowns and responsive charts, making it easier to spot how the pieces relate to a budget.</p>
+      <p>Chart.js provides the visualizations, while the rest of the interface uses HTML, CSS, and JavaScript. Combining a transaction list with a chart was a useful exercise in keeping data and its visual summary in sync.</p>
+      <h2>Keeping data available offline</h2>
+      <p>The project stores information in localStorage, so the data can remain available in the browser between visits without a backend. That choice keeps the app lightweight and makes it usable offline, while keeping the storage model simple for a learning project.</p>
+      <p>Working with browser storage also made me think carefully about the app’s state: a change to a transaction needs to update both the list and the chart, and category filters should give a clear view of the matching entries.</p>
+      <h2>What I practiced</h2>
+      <p>Building the tracker gave me practice with DOM manipulation, event handling, data filtering, and Chart.js. It also reinforced a useful product principle: a dashboard should make the next useful question easier to answer, rather than adding charts for their own sake.</p>
+      <p>The repository and live version are linked below.</p>
+      <div class="article-links"><a href="https://github.com/anooragsingh07/Student-Finance-Tracker/" target="_blank" rel="noopener noreferrer">Student Finance Tracker on GitHub ↗</a><a href="https://anooragsingh07.github.io/Student-Finance-Tracker/" target="_blank" rel="noopener noreferrer">Open the live demo ↗</a></div>
+    </article>
+    <nav class="article-footer-nav" aria-label="More articles"><a href="mindminute.html">← MindMinute</a><a href="../blog.html">All writing →</a></nav><p class="writing-all"><a href="../blog.html">Back to all writing ↗</a></p>
+  </main><footer class="site-footer">© Anoorag Singh</footer><script src="../portfolio-enhancements.js"></script>
+  <script src="../developer-status.js"></script>
+</body>
+</html>

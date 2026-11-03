@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="astronaut_avatar.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
   <style>
     :root {
@@ -79,27 +79,26 @@
       margin-right: auto;
       box-sizing: border-box;
       z-index: 100;
-      border-radius: 22px;
-      background: rgba(255,255,255,0.75);
-      backdrop-filter: blur(36px);
-      -webkit-backdrop-filter: blur(36px);
-      box-shadow: 0 12px 48px 0 rgba(60,60,60,0.22), 0 0 0 16px rgba(109,206,249,0.13);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       padding-top: 16px;
       padding-bottom: 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      transition: background 0.3s;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       margin-top: 2px;
-      box-shadow: 0 8px 32px 0 rgba(60,60,60,0.13), 0 0 0 8px rgba(109,206,249,0.07);
-      border: 1.5px solid rgba(109,206,249,0.15);
+      border: 1px solid rgba(0,0,0,0.06);
     }
     [data-theme="dark"] .navbar {
-      background: rgba(35,43,58,0.75);
-      backdrop-filter: blur(36px);
-      -webkit-backdrop-filter: blur(36px);
-      box-shadow: 0 12px 48px 0 rgba(0,0,0,0.28), 0 0 0 16px rgba(109,206,249,0.13);
-      border: 1.5px solid rgba(109,206,249,0.15);
+      background: rgba(24,31,42,0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.08);
     }
     .navbar-spacer {
       height: 32px;
@@ -554,9 +553,9 @@
     #cmd-palette-modal {
       background: #fff;
       color: var(--text);
-      border-radius: 22px;
-      box-shadow: 0 4px 32px 0 rgba(24,31,42,0.13);
-      border: 1.5px solid #e3eaf3;
+      border-radius: 14px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+      border: 1px solid #e3e3e3;
       min-width: 340px;
       max-width: 540px;
       width: 100%;
@@ -569,12 +568,12 @@
       margin: 32px 0;
       max-height: 70vh;
       overflow-y: auto;
-      scrollbar-width: none;
+      scrollbar-width: none; /* Firefox */
     }
     [data-theme="dark"] #cmd-palette-modal {
       background: #232b3a;
-      color: #e6eaf3;
-      border: 1.5px solid #2c3647;
+      border: 1px solid #2c3647;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
     }
     @media (max-width: 600px) {
       #cmd-palette-modal {
@@ -591,7 +590,7 @@
       z-index: 3;
       width: 100%;
       padding: 0;
-      border-bottom: 1.5px solid #e3eaf3;
+      border-bottom: 1px solid #e3e3e3;
       margin: 0;
     }
     #cmd-palette-input {
@@ -683,11 +682,11 @@
     }
     .cmd-divider {
       border: none;
-      border-top: 1.5px solid #e3eaf3;
+      border-top: 1px solid #e3e3e3;
       margin: 0 0 0 0;
     }
     [data-theme="dark"] .cmd-divider {
-      border-top: 1.5px solid #2c3647;
+      border-top: 1px solid #2c3647;
     }
     [data-theme="dark"] .blog-section {
       color: #e6eaf3;
@@ -716,18 +715,18 @@
     }
     .blog-item {
       background: var(--card);
-      border-radius: 10px;
-      box-shadow: 0 1px 8px rgba(0,0,0,0.10);
-      padding: 32px 32px 24px 32px;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      padding: 32px 36px 28px 36px;
       margin-bottom: 0;
       border: 1px solid var(--border);
       position: relative;
-      transition: box-shadow 0.2s;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       line-height: 1.85;
       scroll-margin-top: 100px;
     }
     .blog-item:hover {
-      box-shadow: 0 4px 24px rgba(109,206,249,0.13);
+      box-shadow: 0 2px 8px rgba(109,206,249,0.15);
     }
     .blog-title, .blog-item a {
       color: var(--accent) !important;
@@ -768,12 +767,112 @@
     .blog-list .blog-item:first-child {
       margin-top: 64px;
     }
+    /* Editorial refresh shared with the portfolio landing page */
+    :root {
+      --bg: #f8f9f6;
+      --card: #ffffff;
+      --text: #303833;
+      --accent: #28664d;
+      --muted: #6c756f;
+      --border: #e3e8e2;
+      --badge: #f0f4ef;
+      --badge-text: #365e4b;
+      --headline: #1f2923;
+      --nav-bg: rgba(255,255,255,0.9);
+    }
+    [data-theme="light"] {
+      --bg: #f8f9f6; --card: #fff; --text: #303833; --accent: #28664d;
+      --muted: #6c756f; --border: #e3e8e2; --badge: #f0f4ef;
+      --badge-text: #365e4b; --headline: #1f2923; --nav-bg: rgba(255,255,255,0.9);
+    }
+    [data-theme="dark"] {
+      --bg: #171d19; --card: #202923; --text: #e5ebe6; --accent: #8bc6a2;
+      --muted: #a1ada5; --border: #35423a; --badge: #28362d;
+      --badge-text: #a8d5b8; --headline: #f0f4f0; --nav-bg: rgba(27,35,30,0.92);
+    }
+    html, body { scroll-padding-top: 112px; }
+    body { background: var(--bg); color: var(--text); font-family: 'Manrope', Arial, sans-serif; line-height: 1.7; }
+    .navbar, .main { max-width: 1160px; }
+    .navbar {
+      width: calc(100% - 40px); top: 16px; padding: 10px 18px; gap: 22px;
+      border: 1px solid var(--border); border-radius: 14px; background: var(--nav-bg);
+      box-shadow: 0 8px 24px rgba(20,32,24,0.06); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+    }
+    [data-theme="dark"] .navbar { background: var(--nav-bg); border-color: var(--border); box-shadow: 0 8px 24px rgba(0,0,0,0.22); }
+    .brand-name { display: flex; align-items: center; gap: 9px; flex-shrink: 0; color: var(--headline); font: 700 0.92rem 'Space Grotesk',sans-serif; letter-spacing: -0.04em; text-decoration: none; white-space: nowrap; }
+    .brand-monogram { display: grid; width: 32px; height: 32px; place-items: center; border-radius: 9px; background: var(--headline); color: var(--bg); font: 500 0.72rem 'DM Mono',monospace; }
+    .brand-name-mobile { display: none; }
+    .nav-collapsible { gap: 12px; }
+    .nav-links { gap: clamp(10px, 1.3vw, 18px); }
+    .nav-link { color: var(--muted); font-size: 0.77rem; font-weight: 700; letter-spacing: 0.015em; }
+    .nav-link:hover, .nav-link.active { color: var(--accent); }
+    .nav-link::after, .nav-link.active::after, .nav-link:not(.active)::after { display: none !important; }
+    .nav-right { gap: 10px; }
+    .nav-icons { gap: 12px; }
+    .theme-toggle, .kbd-hint { border: 1px solid var(--border); border-radius: 9px; background: var(--card); color: var(--text); box-shadow: none; }
+    .theme-toggle { padding: 8px; margin-left: 0; }
+    .theme-toggle svg { stroke: var(--text); }
+    .kbd-hint { padding: 6px 9px; color: var(--muted); }
+    .main { padding: 0 40px 64px; }
+    .blog-hero { max-width: 880px; margin: 88px auto 0; padding: 58px 0 45px; }
+    .blog-kicker { margin: 0 0 20px; color: var(--accent); font: 500 0.72rem 'DM Mono',monospace; letter-spacing: 0.1em; text-transform: uppercase; }
+    .blog-hero h1 { margin: 0 0 15px; color: var(--headline); font: 600 clamp(3rem, 7vw, 5.4rem)/1 'Space Grotesk',sans-serif; letter-spacing: -0.075em; }
+    .blog-hero > p:last-child { max-width: 620px; margin: 0; color: var(--muted); font-size: 1rem; line-height: 1.8; }
+    .blog-section { max-width: 880px; margin: 0 auto; color: var(--text); }
+    .blog-list { display: grid; gap: 12px; }
+    .blog-item, .blog-list .blog-item:first-child {
+      padding: 26px 28px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--card);
+      box-shadow: none;
+      line-height: 1.8;
+      transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+    }
+    .blog-item:hover { border-color: #c8d5ca; box-shadow: 0 12px 32px rgba(28,42,33,0.06); transform: translateY(-2px); }
+    [data-theme="dark"] .blog-item { background: var(--card); border-color: var(--border); }
+    .blog-title, .blog-item a { color: var(--headline) !important; font: 600 1.35rem/1.35 'Space Grotesk',sans-serif; letter-spacing: -0.045em; }
+    .blog-title { display: block; margin: 0; }
+    .blog-title:hover, .blog-item a:hover { color: var(--accent) !important; }
+    .blog-meta { margin: 6px 0 15px; color: var(--muted); font: 500 0.67rem 'DM Mono',monospace; }
+    .blog-summary { color: var(--muted); font-size: 0.88rem; line-height: 1.85; }
+    .blog-summary b, .blog-summary strong { color: var(--headline); }
+    .blog-summary a { color: var(--accent) !important; font: inherit; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+    .site-footer { max-width: 1080px; margin: 40px auto 0; padding: 20px 40px 28px; border-top: 1px solid var(--border); color: var(--muted); font: 500 0.7rem 'DM Mono',monospace; letter-spacing: 0.04em; }
+    @media (max-width: 900px) {
+      .navbar { width: calc(100% - 24px); top: 8px; padding: 9px 12px; border-radius: 12px; }
+      .brand-name-desktop { display: none; }
+      .brand-name-mobile { display: flex; }
+      .navbar-mobile-header { display: flex; }
+      .nav-menu-toggle { order: 2; width: 38px; height: 38px; border-radius: 9px; background: var(--badge); color: var(--text); }
+      .navbar-compact-tools { order: 3; gap: 6px; }
+      .navbar-compact-tools .theme-toggle { display: flex; padding: 7px; }
+      .navbar-compact-tools .kbd-hint { padding: 7px; }
+      .navbar-compact-tools .kbd-hint-text { display: none; }
+      .main { padding: 0 22px 48px; }
+      .blog-hero { margin-top: 88px; padding: 60px 0 35px; }
+      .site-footer { padding-right: 22px; padding-left: 22px; }
+    }
+    @media (max-width: 600px) {
+      .main { padding-right: 18px; padding-left: 18px; }
+      .blog-hero { margin-top: 76px; padding-top: 52px; }
+      .blog-hero h1 { font-size: clamp(2.8rem, 14vw, 4.1rem); }
+      .blog-item, .blog-list .blog-item:first-child { padding: 22px 18px; }
+      .blog-title, .blog-item a { font-size: 1.18rem; }
+      .site-footer { padding-right: 18px; padding-left: 18px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
   </style>
+  <link rel="stylesheet" href="portfolio-enhancements.css">
+  <link rel="stylesheet" href="developer-status.css">
 </head>
-<body>
+<body class="blog-page">
   <div class="navbar-spacer"></div>
   <nav class="navbar" id="site-nav" role="navigation" aria-label="Main Navigation">
     <div class="navbar-mobile-header">
+      <a class="brand-name brand-name-mobile" href="index.html#home"><span class="brand-monogram">AƧ</span><span>Anoorag Singh</span></a>
       <button type="button" class="nav-menu-toggle" id="nav-menu-toggle" aria-expanded="false" aria-controls="nav-collapsible" aria-label="Open menu">
         <span class="nav-menu-bar"></span>
         <span class="nav-menu-bar"></span>
@@ -785,18 +884,19 @@
         </button>
         <button type="button" class="kbd-hint nav-cmd-open" title="Command palette (Ctrl+K)" aria-label="Open command palette">
           <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" style="vertical-align:middle;"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="M10 8h.01M12 12h.01M14 8h.01M16 12h.01M18 8h.01M6 8h.01M7 16h10M8 12h.01"></path></svg>
-          <span class="kbd-hint-text">Ctrl + K</span>
+          <span class="kbd-hint-text">⌘ CTRL K</span>
         </button>
       </div>
     </div>
+    <a class="brand-name brand-name-desktop" href="index.html#home"><span class="brand-monogram">AƧ</span><span>Anoorag Singh</span></a>
     <div class="nav-collapsible" id="nav-collapsible">
       <div class="nav-links">
-        <a href="index.html#home" class="nav-link" id="nav-home">Home</a>
         <a href="index.html#education" class="nav-link" id="nav-education">Education</a>
         <a href="index.html#projects" class="nav-link" id="nav-projects">Projects</a>
         <a href="index.html#skills" class="nav-link" id="nav-skills">Skills</a>
-        <a href="blog.html" class="nav-link active" id="nav-blog">Blog</a>
         <a href="index.html#about" class="nav-link" id="nav-about">About</a>
+        <a href="blog.html" class="nav-link active" id="nav-blog">Blog</a>
+        <a href="index.html#contact" class="nav-link" id="nav-contact">Contact</a>
       </div>
       <div class="nav-right">
         <div class="nav-icons">
@@ -807,8 +907,8 @@
             <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path></svg>
           </a>
           <a href="https://x.com/code_anoorag" target="_blank" title="X" class="icon-link" aria-label="X">
-            <svg width="20" height="20" viewBox="0 0 120 120" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M87.6 10H110.4L72.8 56.2L117.6 110H82.2L53.6 75.6L21.6 110H-1.2L39.2 60.6L-3.2 10H33.2L59.2 41.2L87.6 10ZM81.2 100.2H91.2L32.8 19.2H22.2L81.2 100.2Z"/>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 1h3.3l-7.2 8.8L22.5 23h-6.7l-5.2-7L4.5 23H1l8.4-9.5L1 1h7l5.1 6.6zm-1.2 20h1.8L6.8 3H5z"/>
             </svg>
           </a>
           <a href="mailto:anooragsingh0007@gmail.com" title="Email" class="icon-link" aria-label="Email" id="copy-email-navbar">
@@ -821,44 +921,54 @@
           </button>
           <button type="button" class="kbd-hint nav-cmd-open" title="Command palette (Ctrl+K)" aria-label="Open command palette">
             <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" style="vertical-align:middle;"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="M10 8h.01M12 12h.01M14 8h.01M16 12h.01M18 8h.01M6 8h.01M7 16h10M8 12h.01"></path></svg>
-            <span class="kbd-hint-text">Ctrl + K</span>
+          <span class="kbd-hint-text">⌘ CTRL K</span>
           </button>
         </div>
       </div>
     </div>
   </nav>
   <main class="main">
-    <div class="section-title" id="blog">Blog</div>
+    <header class="blog-hero" id="blog">
+      <p class="blog-kicker">(05)</p>
+      <h1>Writing &amp; Notes</h1>
+      <p class="blog-archive-meta">5 POSTS · FROM THE ARCHIVE</p>
+    </header>
     <section class="blog-section">
       <div class="blog-list">
         <div class="blog-item" id="blog-cpu-schedsim">
-          <a href="#" class="blog-title">Simulating CPU Scheduling Algorithms with C++</a>
-          <div class="blog-meta">6/10/2024 • 8 min read</div>
-          <div class="blog-summary">Understanding Operating Systems became much easier after I built CPU-SchedSim, a C++-based simulator for analyzing the behavior of different CPU scheduling algorithms. These are vital for efficient process management in modern OSes.<br><br><b>Algorithms Implemented:</b> FCFS, SJF, Round-Robin, Priority Scheduling<br><b>Features:</b> Context switching, preemption, adjustable time slices, exponential arrival, detailed metrics.<br><br>This project helped me deeply understand how scheduling decisions affect CPU utilization and system responsiveness.<br><b>Resources:</b> GeeksforGeeks, TutorialsPoint, cplusplus.com<br><a href="https://github.com/anooragsingh07/CPU-SchedSim--CPU-Scheduling-Simulator-" target="_blank">GitHub</a> | <a href="https://anooragsingh07.github.io/CPU-SchedSim--CPU-Scheduling-Simulator-/" target="_blank">Live Demo</a></div>
+          <h2 class="blog-title"><a href="blog/simulating-cpu-scheduling.html">Simulating CPU Scheduling Algorithms with C++</a></h2>
+          <div class="blog-meta"><span>JUN 10, 2024</span><span>8 MIN READ</span></div>
+          <div class="blog-summary">Understanding Operating Systems became much easier after I built CPU-SchedSim, a C++-based simulator for analyzing the behavior of different CPU scheduling algorithms. These are vital for efficient process management in modern OSes.</div>
+          <a class="blog-read-link" href="blog/simulating-cpu-scheduling.html">Read article <span aria-hidden="true">→</span></a>
         </div>
         <div class="blog-item" id="blog-cpp-love">
-          <a href="#" class="blog-title">Why I Love Coding in C++</a>
-          <div class="blog-meta">5/28/2024 • 5 min read</div>
-          <div class="blog-summary">C++ was the language that introduced me to real programming logic. I've used it for building simulations, solving problems, and learning core computer science concepts.<br><br><b>Why C++ Stands Out:</b> Memory management, low-level operations, DSA, OOP.<br><br>C++ also helped me in creating realistic simulators like CPU-SchedSim by providing control over thread-level behavior and CPU logic.<br><b>Resources:</b> Codecademy, The Cherno, GeeksforGeeks</div>
+          <h2 class="blog-title"><a href="blog/why-i-love-cpp.html">Why I Love Coding in C++</a></h2>
+          <div class="blog-meta"><span>MAY 28, 2024</span><span>5 MIN READ</span></div>
+          <div class="blog-summary">C++ was the language that introduced me to real programming logic. I’ve used it for building simulations, solving problems, and learning core computer science concepts.</div>
+          <a class="blog-read-link" href="blog/why-i-love-cpp.html">Read article <span aria-hidden="true">→</span></a>
         </div>
         <div class="blog-item" id="blog-cpu-scheduling">
-          <a href="#" class="blog-title">Understanding CPU Scheduling: FCFS, SJF, RR, and Priority</a>
-          <div class="blog-meta">5/15/2024 • 7 min read</div>
-          <div class="blog-summary">CPU scheduling decides the order in which processes run, which directly affects performance. Let's simplify the 4 major scheduling algorithms: FCFS, SJF, Round-Robin, Priority Scheduling.<br><br>In my CPU-SchedSim project, I simulated all of these to measure metrics like average turnaround time, waiting time, and CPU utilization using C++.<br><b>Resources:</b> Neso Academy, GeeksforGeeks</div>
+          <h2 class="blog-title"><a href="blog/understanding-cpu-scheduling.html">Understanding CPU Scheduling: FCFS, SJF, RR, and Priority</a></h2>
+          <div class="blog-meta"><span>MAY 15, 2024</span><span>7 MIN READ</span></div>
+          <div class="blog-summary">CPU scheduling decides the order in which processes run, which directly affects performance. Let’s simplify the 4 major scheduling algorithms: FCFS, SJF, Round-Robin, Priority Scheduling.</div>
+          <a class="blog-read-link" href="blog/understanding-cpu-scheduling.html">Read article <span aria-hidden="true">→</span></a>
         </div>
         <div class="blog-item" id="blog-mindminute">
-          <a href="#" class="blog-title">MindMinute – One Minute to Mindfulness</a>
-          <div class="blog-meta">4/30/2024 • 4 min read</div>
-          <div class="blog-summary">As students or developers, it's easy to forget to take care of our mental health. That's why I built MindMinute, a web app focused on 1-minute mindfulness breaks, using only HTML, CSS, and JavaScript.<br><br><b>Features:</b> Breathing/stretching exercises, meditation prompts, animated timers, offline support.<br><br>This project taught me the value of building lightweight, accessible tools with minimal dependencies.<br><b>Resources:</b> MDN, Mindfulness Techniques<br><a href="https://github.com/anooragsingh07/Mind-Minute" target="_blank">GitHub</a> | <a href="https://anooragsingh07.github.io/Mind-Minute/" target="_blank">Live Demo</a></div>
+          <h2 class="blog-title"><a href="blog/mindminute.html">MindMinute – One Minute to Mindfulness</a></h2>
+          <div class="blog-meta"><span>APR 30, 2024</span><span>4 MIN READ</span></div>
+          <div class="blog-summary">MindMinute is a lightweight mindfulness app designed for short breathing, stretching, and meditation breaks. It uses simple web technologies and animated timers to make a pause easy to start.</div>
+          <a class="blog-read-link" href="blog/mindminute.html">Read article <span aria-hidden="true">→</span></a>
         </div>
         <div class="blog-item" id="blog-finance-tracker">
-          <a href="#" class="blog-title">Learning Finance Through Code – Student Finance Tracker</a>
-          <div class="blog-meta">4/10/2024 • 6 min read</div>
-          <div class="blog-summary">Managing personal expenses can be tough for students. I solved this with the Student Finance Tracker, a smart, student-friendly budgeting tool built using HTML, CSS, JavaScript, and Chart.js.<br><br><b>Features:</b> Add/delete/filter transactions, category breakdown, responsive charts, offline support.<br><br>This project helped me master DOM manipulation, event handling, and working with Chart.js.<br><b>Resources:</b> Chart.js, MDN, NerdWallet<br><a href="https://github.com/anooragsingh07/Student-Finance-Tracker/" target="_blank">GitHub</a> | <a href="https://anooragsingh07.github.io/Student-Finance-Tracker/" target="_blank">Live Demo</a></div>
+          <h2 class="blog-title"><a href="blog/learning-finance-through-code.html">Learning Finance Through Code – Student Finance Tracker</a></h2>
+          <div class="blog-meta"><span>APR 10, 2024</span><span>6 MIN READ</span></div>
+          <div class="blog-summary">Student Finance Tracker brings student budgets, transactions, and category totals into a small dashboard built with JavaScript and Chart.js, with local storage for offline access.</div>
+          <a class="blog-read-link" href="blog/learning-finance-through-code.html">Read article <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>
   </main>
+  <footer class="site-footer"><span>© 2026 ANOORAG SINGH</span><span>DESIGNED &amp; BUILT WITH INTENT</span><a class="back-to-top" href="#blog">Back to top ↑</a></footer>
   <!-- Command Palette Modal (copied from index.html) -->
   <div id="cmd-palette-overlay" tabindex="-1" style="display:none;">
     <div id="cmd-palette-modal" role="dialog" aria-modal="true" aria-labelledby="cmd-palette-title">
@@ -871,11 +981,22 @@
         <div class="cmd-list">
           <button class="cmd-item" data-cmd="home"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 12L12 3l9 9"/><path d="M9 21V9h6v12"/></svg> Home</button>
           <button class="cmd-item" data-cmd="projects"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> Projects</button>
-          <button class="cmd-item" data-cmd="experience"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M16 3v4M8 3v4"/></svg> Experience</button>
           <button class="cmd-item" data-cmd="education"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 12l-10-7-10 7 10 7 10-7z"/><path d="M2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6"/></svg> Education</button>
           <button class="cmd-item" data-cmd="skills"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.09a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h.09a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.09a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Skills</button>
           <button class="cmd-item" data-cmd="about"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z"/><path d="M4.27 20.27C5.67 18.67 8.11 18 12 18s6.33.67 7.73 2.27"/></svg> About</button>
-          <button class="cmd-item" data-cmd="resume"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8M8 12h8M8 16h4"/></svg> Resume</button>
+          <button class="cmd-item" data-cmd="blog"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 1 4 17.5z"/><path d="M4 17.5A2.5 2.5 0 0 1 6.5 15H20M8 7h8M8 10h8"/></svg> Blog</button>
+          <button class="cmd-item" data-cmd="contact"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg> Contact</button>
+        </div>
+      </div>
+      <hr class="cmd-divider">
+      <div class="cmd-section">
+        <div class="cmd-section-title">Profiles</div>
+        <div class="cmd-list">
+          <button class="cmd-item" data-command-url="https://github.com/anooragsingh07"><span aria-hidden="true">⌘</span> GitHub</button>
+          <button class="cmd-item" data-command-url="https://codolio.com/profile/Anoorag%20Singh"><span aria-hidden="true">&lt;/&gt;</span> Codolio · @Anoorag Singh</button>
+          <button class="cmd-item" data-command-url="https://medium.com/@anooragsingh0007"><span aria-hidden="true">M</span> Medium · @anooragsingh0007</button>
+          <button class="cmd-item" data-command-url="https://www.linkedin.com/in/anooragsingh/"><span aria-hidden="true">in</span> LinkedIn</button>
+          <button class="cmd-item" data-command-url="https://x.com/code_anoorag"><span aria-hidden="true">𝕏</span> X · @code_anoorag</button>
         </div>
       </div>
       <hr class="cmd-divider">
@@ -909,9 +1030,9 @@
   <script>
     // Theme toggle with persistence (copied from index.html)
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    function setTheme(theme) {
+    function setTheme(theme, persist = true) {
       document.documentElement.setAttribute('data-theme', theme);
-      localStorage.setItem('theme', theme);
+      if (persist) localStorage.setItem('theme', theme);
       const darkIcon = `<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>`;
       const lightIcon = `<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="14" cy="14" r="5" fill="none" stroke="#f7b500" stroke-width="2.2"/><g stroke="#f7b500" stroke-width="2.2" stroke-linecap="round"><line x1="14" y1="6" x2="14" y2="3.5"/><line x1="14" y1="22" x2="14" y2="24.5"/><line x1="6" y1="14" x2="3.5" y2="14"/><line x1="22" y1="14" x2="24.5" y2="14"/><line x1="8.22" y1="8.22" x2="6.4" y2="6.4"/><line x1="19.78" y1="8.22" x2="21.6" y2="6.4"/><line x1="8.22" y1="19.78" x2="6.4" y2="21.6"/><line x1="19.78" y1="19.78" x2="21.6" y2="21.6"/></g></svg>`;
       const html = theme === 'dark' ? darkIcon : lightIcon;
@@ -930,7 +1051,7 @@
     (function() {
       const saved = localStorage.getItem('theme');
       if (saved) setTheme(saved);
-      else setTheme(prefersDark ? 'dark' : 'light');
+      else setTheme('light');
     })();
     // Command Palette logic (copied from index.html)
     const cmdOverlay = document.getElementById('cmd-palette-overlay');
@@ -979,9 +1100,15 @@
         const cmd = btn.getAttribute('data-cmd');
         closeCmdPalette();
         if (cmd === 'home') window.location.href = 'index.html#home';
+        if (cmd === 'education') window.location.href = 'index.html#education';
         if (cmd === 'projects') window.location.href = 'index.html#projects';
+        if (cmd === 'skills') window.location.href = 'index.html#skills';
+        if (cmd === 'about') window.location.href = 'index.html#about';
+        if (cmd === 'contact') window.location.href = 'index.html#contact';
+        if (cmd === 'blog') document.getElementById('blog').scrollIntoView({behavior:'smooth'});
         if (cmd === 'theme-dark') setTheme('dark');
         if (cmd === 'theme-light') setTheme('light');
+        if (cmd === 'theme-system') { localStorage.removeItem('theme'); setTheme(prefersDark ? 'dark' : 'light', false); }
       });
     });
     // Filter commands by input
@@ -1041,5 +1168,7 @@
       });
     });
   </script>
+  <script src="portfolio-enhancements.js"></script>
+  <script src="developer-status.js"></script>
 </body>
-</html> 
+</html>

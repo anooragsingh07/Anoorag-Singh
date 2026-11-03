@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simulating CPU Scheduling Algorithms with C++ · Anoorag Singh</title>
+  <link rel="icon" type="image/png" href="../astronaut_avatar.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../portfolio-enhancements.css">
+  <link rel="stylesheet" href="../developer-status.css">
+</head>
+<body class="article-page">
+  <nav class="navbar article-nav" aria-label="Article navigation">
+    <a class="brand-name" href="../index.html#home"><span class="brand-monogram">AS</span><span>Anoorag Singh</span></a>
+    <div class="nav-right"><a class="nav-link" href="../blog.html">All writing</a><button class="theme-toggle" type="button" aria-label="Toggle dark/light mode"><span class="theme-icon">◐</span></button><button class="kbd-hint nav-cmd-open" type="button" aria-label="Open command palette">Ctrl + K</button></div>
+  </nav>
+  <main class="main">
+    <header class="article-header">
+      <p class="article-kicker">Project notes · C++ · Operating systems</p>
+      <h1>Simulating CPU Scheduling Algorithms with C++</h1>
+      <p class="article-meta">June 10, 2024 · 8 min read</p>
+      <p class="article-lede">Building CPU-SchedSim turned operating-systems scheduling from a set of textbook rules into something I could observe, compare, and measure.</p>
+    </header>
+    <article class="article-body">
+      <p>CPU scheduling is the operating system’s way of deciding which ready process gets time on the processor. That decision changes how long processes wait, when they finish, and how steadily the CPU stays busy. I built <strong>CPU-SchedSim</strong> to make those trade-offs easier to see in practice.</p>
+      <h2>Four ways to choose the next process</h2>
+      <p>The simulator covers four familiar approaches. First-Come, First-Served (FCFS) runs processes in arrival order. Shortest Job First (SJF) chooses the process with the smallest expected burst. Round-Robin gives each ready process a configurable time slice and cycles through the queue. Priority Scheduling selects according to assigned priority.</p>
+      <p>These rules produce different schedules even with the same input. A short job can finish quickly under SJF, while a long job may wait. Round-Robin shares processor time more evenly, but its behavior depends on the time quantum. FCFS is simple to follow, though a long process at the front can hold up shorter work behind it.</p>
+      <h2>Representing a workload</h2>
+      <p>To compare algorithms fairly, the simulator needs a set of processes with arrival times, CPU bursts, and any algorithm-specific settings such as priority or time slice. It also models context switches and preemption so a schedule reflects more than just a list of process names.</p>
+      <p>Configurable values make it possible to adjust the workload and see how the results change. Exponential arrival times help vary the spacing between incoming processes, while detailed metrics make each run easier to compare.</p>
+      <h2>What the metrics make visible</h2>
+      <p>Waiting time measures time spent ready but not running. Turnaround time measures the interval from arrival to completion. CPU utilization describes how much of the simulated time is spent doing process work. Looking at these measures together is more useful than declaring one algorithm the winner: a policy can reduce one metric while making another worse.</p>
+      <p>The project helped me connect scheduling decisions to system responsiveness. Implementing each policy in C++ also gave me a concrete place to reason about queues, process state, and the points where a preemption changes the schedule.</p>
+      <h2>Try the simulator</h2>
+      <p>CPU-SchedSim is a learning project for exploring FCFS, SJF, Round-Robin, and Priority Scheduling. The source and browser demo are available below.</p>
+      <div class="article-links"><a href="https://github.com/anooragsingh07/CPU-SchedSim--CPU-Scheduling-Simulator-" target="_blank" rel="noopener noreferrer">View the source on GitHub ↗</a><a href="https://anooragsingh07.github.io/CPU-SchedSim--CPU-Scheduling-Simulator-/" target="_blank" rel="noopener noreferrer">Open the live demo ↗</a></div>
+    </article>
+    <nav class="article-footer-nav" aria-label="More articles"><a href="why-i-love-cpp.html">← Why I Love Coding in C++</a><a href="understanding-cpu-scheduling.html">Understanding CPU Scheduling →</a></nav>
+    <p class="writing-all"><a href="../blog.html">Back to all writing ↗</a></p>
+  </main>
+  <footer class="site-footer">© Anoorag Singh</footer>
+  <script src="../portfolio-enhancements.js"></script>
+  <script src="../developer-status.js"></script>
+</body>
+</html>

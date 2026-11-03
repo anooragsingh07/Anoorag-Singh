@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Understanding CPU Scheduling · Anoorag Singh</title>
+  <link rel="icon" type="image/png" href="../astronaut_avatar.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../portfolio-enhancements.css">
+  <link rel="stylesheet" href="../developer-status.css">
+</head>
+<body class="article-page">
+  <nav class="navbar article-nav" aria-label="Article navigation"><a class="brand-name" href="../index.html#home"><span class="brand-monogram">AS</span><span>Anoorag Singh</span></a><div class="nav-right"><a class="nav-link" href="../blog.html">All writing</a><button class="theme-toggle" type="button" aria-label="Toggle dark/light mode"><span class="theme-icon">◐</span></button><button class="kbd-hint nav-cmd-open" type="button" aria-label="Open command palette">Ctrl + K</button></div></nav>
+  <main class="main">
+    <header class="article-header"><p class="article-kicker">Operating systems · C++</p><h1>Understanding CPU Scheduling: FCFS, SJF, RR, and Priority</h1><p class="article-meta">May 15, 2024 · 7 min read</p><p class="article-lede">CPU scheduling determines which ready process uses the processor next. Here is a plain-language look at four common ways to make that choice.</p></header>
+    <article class="article-body">
+      <p>Several processes may be ready to run at the same time, while a processor can execute only one at a time on a single core. The operating system’s scheduler chooses what runs next. The choice affects waiting, completion time, and how processor time is shared.</p>
+      <h2>First-Come, First-Served</h2>
+      <p>FCFS serves processes in the order they arrive. It is easy to understand and implement because the ready queue behaves like a line. Its simplicity has a trade-off: if a long process reaches the front first, shorter jobs behind it wait even if they could finish quickly.</p>
+      <h2>Shortest Job First</h2>
+      <p>SJF chooses the process with the shortest expected CPU burst. When the burst estimates are accurate, short tasks can complete with less waiting. The scheduler must know or estimate the next burst, and longer work may wait when short jobs keep arriving. A preemptive variation can switch to a newly arrived process with a shorter remaining time.</p>
+      <h2>Round-Robin</h2>
+      <p>Round-Robin gives each ready process a fixed time slice, then moves to the next process if work remains. This rotation shares the processor regularly. The time quantum matters: a very small quantum causes more context switches, while a large quantum makes the method behave more like FCFS.</p>
+      <h2>Priority Scheduling</h2>
+      <p>Priority Scheduling selects a process according to its assigned priority. It can favor urgent or important work, but low-priority processes may wait a long time if higher-priority work continues to arrive. Systems can use aging or other policy choices to help prevent starvation.</p>
+      <h2>Compare more than one number</h2>
+      <p>Waiting time records how long a process spends ready without running. Turnaround time covers the time from arrival through completion. CPU utilization describes how much of the simulated interval is spent executing work. Each metric shows a different aspect of a schedule, so comparing them together gives a more balanced view.</p>
+      <p>I implemented these four algorithms in CPU-SchedSim using C++. The simulator includes context switching, preemption, configurable settings, exponential arrivals, and detailed metrics. Running the same workload through different policies makes the trade-offs visible.</p>
+      <p>For additional background, I referred to Neso Academy and GeeksforGeeks. The simulator source is available below.</p>
+      <div class="article-links"><a href="https://github.com/anooragsingh07/CPU-SchedSim--CPU-Scheduling-Simulator-" target="_blank" rel="noopener noreferrer">CPU-SchedSim on GitHub ↗</a><a href="simulating-cpu-scheduling.html">How I built the simulator ↗</a></div>
+    </article>
+    <nav class="article-footer-nav" aria-label="More articles"><a href="why-i-love-cpp.html">← Why I Love Coding in C++</a><a href="mindminute.html">MindMinute →</a></nav><p class="writing-all"><a href="../blog.html">Back to all writing ↗</a></p>
+  </main><footer class="site-footer">© Anoorag Singh</footer><script src="../portfolio-enhancements.js"></script>
+  <script src="../developer-status.js"></script>
+</body>
+</html>
