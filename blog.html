@@ -872,12 +872,7 @@
   <div class="navbar-spacer"></div>
   <nav class="navbar" id="site-nav" role="navigation" aria-label="Main Navigation">
     <div class="navbar-mobile-header">
-      <a class="brand-name brand-name-mobile" href="index.html#home"><span class="brand-monogram">AƧ</span><span>Anoorag Singh</span></a>
-      <button type="button" class="nav-menu-toggle" id="nav-menu-toggle" aria-expanded="false" aria-controls="nav-collapsible" aria-label="Open menu">
-        <span class="nav-menu-bar"></span>
-        <span class="nav-menu-bar"></span>
-        <span class="nav-menu-bar"></span>
-      </button>
+      <button type="button" class="brand-name brand-name-mobile" id="nav-menu-toggle" aria-expanded="false" aria-controls="nav-collapsible" aria-label="Open navigation menu"><span class="brand-monogram">AƧ</span><span>Anoorag Singh</span></button>
       <div class="navbar-compact-tools">
         <button type="button" class="theme-toggle" aria-label="Toggle dark/light mode">
           <span class="theme-icon"></span>
@@ -1045,6 +1040,7 @@
       setTheme(current === 'dark' ? 'light' : 'dark');
     }
     document.querySelectorAll('.theme-toggle').forEach(function(btn) {
+      btn.dataset.themeToggleBound = 'true';
       btn.addEventListener('click', toggleTheme);
     });
     // On load
@@ -1124,6 +1120,8 @@
     function closeMobileNav() {
       if (!siteNav || !navMenuToggle) return;
       siteNav.classList.remove('is-open');
+      document.documentElement.classList.remove('nav-menu-open');
+      document.body.classList.remove('nav-menu-open');
       navMenuToggle.setAttribute('aria-expanded', 'false');
       navMenuToggle.setAttribute('aria-label', 'Open menu');
     }
@@ -1131,8 +1129,21 @@
       if (!siteNav || !navMenuToggle) return;
       const open = !siteNav.classList.contains('is-open');
       siteNav.classList.toggle('is-open', open);
+      document.documentElement.classList.toggle('nav-menu-open', open);
+      document.body.classList.toggle('nav-menu-open', open);
       navMenuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       navMenuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      if (open) {
+        window.setTimeout(function() {
+          if (siteNav.classList.contains('is-open')) {
+            Array.from(siteNav.querySelectorAll('.nav-link'))
+              .find(function(link) { return link.getClientRects().length > 0; })
+              ?.focus();
+          }
+        }, 350);
+      } else {
+        navMenuToggle.focus();
+      }
     }
     if (navMenuToggle) {
       navMenuToggle.addEventListener('click', function(e) {
@@ -1148,7 +1159,10 @@
       if (window.innerWidth > 900) closeMobileNav();
     });
     document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeMobileNav();
+      if (e.key === 'Escape' && siteNav && siteNav.classList.contains('is-open')) {
+        closeMobileNav();
+        navMenuToggle?.focus();
+      }
     });
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {

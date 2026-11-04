@@ -193,6 +193,8 @@
     };
     updateThemeIcon();
     document.querySelectorAll('.theme-toggle').forEach((button) => {
+      if (button.dataset.themeToggleBound === 'true') return;
+      button.dataset.themeToggleBound = 'true';
       button.addEventListener('click', () => {
         const current = root.getAttribute('data-theme') || 'light';
         const next = current === 'dark' ? 'light' : 'dark';
