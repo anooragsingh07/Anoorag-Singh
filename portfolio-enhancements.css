@@ -1063,6 +1063,7 @@ body {
 .platform-cards { margin-top: 38px; gap: 12px; }
 .platform-card { border-radius: 12px; box-shadow: 0 8px 22px rgba(31, 40, 44, .035); }
 .section-title { font-size: clamp(2.4rem, 4.6vw, 3.5rem); }
+
 .education-grid { gap: 0; }
 .education-grid .card { border-width: 1px 0 0; border-radius: 0; background: transparent; box-shadow: none; }
 .project-card { border-radius: 14px; box-shadow: none; }
@@ -1098,6 +1099,7 @@ body {
 /* Last-pass screenshot alignment: keep the hero close to the 73px header. */
 html { scroll-padding-top: 84px; }
 body { font-family: var(--body); }
+
 .navbar-spacer { height: 0 !important; }
 #site-nav.navbar {
   position: fixed !important;
@@ -1671,22 +1673,40 @@ html, body { overflow-x: clip !important; }
 
 @media (max-width:700px) {
   #contact.section-title {
-    margin:34px 0 20px !important;
+    margin:34px 0 48px !important;
     padding:32px 0 0 !important;
+    align-items:flex-start !important;
+    column-gap:16px !important;
+    row-gap:0 !important;
     font:400 2.25rem/1 var(--display) !important;
     letter-spacing:-.02em !important;
     text-transform:none !important;
   }
-  #contact.section-title::before { font:500 .58rem var(--mono) !important; }
+  #contact.section-title::before {
+    width:auto !important;
+    height:auto !important;
+    margin-right:0 !important;
+    transform:translateY(19px) !important;
+    content:"(06)" !important;
+    font:500 .6875rem/1.5 var(--mono) !important;
+    letter-spacing:.22em !important;
+  }
   #contact.section-title::after {
     content:"ALWAYS UP FOR A CHAT" !important;
-    font-size:.48rem !important;
-    letter-spacing:.1em !important;
+    flex:0 0 100% !important;
+    width:100% !important;
+    max-width:none !important;
+    margin:16px 0 0 !important;
+    padding:0 0 6px !important;
+    font:500 .6875rem/1.5 var(--mono) !important;
+    letter-spacing:.16em !important;
+    text-align:left !important;
   }
   .contact-section .about-heading {
     margin-bottom:24px !important;
     font:400 2.25rem/1.08 var(--display) !important;
     letter-spacing:-.02em !important;
+    text-align:left !important;
   }
   .contact-section .contact-intro {
     margin-bottom:0 !important;
@@ -1711,8 +1731,6 @@ html, body { overflow-x: clip !important; }
     min-height:74px !important;
     padding:16px 20px !important;
   }
-  .contact-social-card:nth-child(3),
-  .contact-social-card:nth-child(4) { min-height:90.6px !important; }
   .contact-social-card[href="resume/Resume.pdf"] {
     display:inline-flex !important;
     box-sizing:border-box !important;
@@ -2185,5 +2203,277 @@ body.nav-menu-open {
   .nav-collapsible,
   .nav-menu-bar {
     transition:none !important;
+  }
+}
+
+@media (min-width: 701px) {
+  #site-nav.navbar {
+    padding-left: max(40px, calc((100vw - 1360px) / 2)) !important;
+    padding-right: max(40px, calc((100vw - 1360px) / 2)) !important;
+  }
+  .brand-name-desktop .brand-monogram {
+    width: 32px !important;
+    height: 32px !important;
+    box-sizing: border-box !important;
+  }
+  #site-nav .nav-links {
+    left: 54.5% !important;
+    gap: 28px !important;
+  }
+  .nav-link {
+    font-size: 13px !important;
+    letter-spacing: .025em !important;
+  }
+  .nav-right {
+    right: max(40px, calc((100vw - 1360px) / 2)) !important;
+    gap: 8px !important;
+  }
+  .main > #home {
+    padding-top: 45px !important;
+  }
+  .hero-eyebrow {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    letter-spacing: .28em !important;
+  }
+  .hero-greeting {
+    font-size: clamp(1.6rem, 3.2vw, 2.6rem) !important;
+    line-height: 1.15 !important;
+  }
+  .headline {
+    font-size: clamp(3.4rem, 9vw, 8rem) !important;
+    line-height: .98 !important;
+    letter-spacing: -.02em !important;
+  }
+  .desc {
+    max-width: 576px !important;
+    margin-top: 25px !important;
+    font-size: 18px !important;
+    line-height: 28px !important;
+  }
+  #home .btn-row {
+    margin-top: 40px !important;
+    gap: 16px !important;
+  }
+  #home .btn-row .btn {
+    width: 164px !important;
+    min-width: 164px !important;
+    height: 48px !important;
+    min-height: 48px !important;
+    box-sizing: border-box !important;
+    padding-right: 25px !important;
+    padding-left: 25px !important;
+  }
+  #home .btn-row .btn.secondary {
+    width: 174px !important;
+    min-width: 174px !important;
+  }
+  .platform-cards {
+    margin-top: 49px !important;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 900px) {
+  #site-nav .nav-desktop-tools .kbd-hint {
+    width: 40px !important;
+    min-width: 40px !important;
+    height: 28px !important;
+    min-height: 28px !important;
+    box-sizing: border-box !important;
+    justify-content: center;
+    padding: 5px !important;
+  }
+  #site-nav .kbd-hint-text {
+    font-size: 0 !important;
+    letter-spacing: 0 !important;
+  }
+  #site-nav .kbd-hint-text::before {
+    content: "⌘";
+    font-size: .9rem;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 900px) {
+  .section-title {
+    height: 48px !important;
+    align-items: flex-start !important;
+    margin-bottom: 0 !important;
+    padding: 40px 0 0 !important;
+    border-top: 1px solid var(--border) !important;
+    font: 400 3rem/1 var(--display) !important;
+  }
+  #education.section-title {
+    height: 47px !important;
+    margin-top: 95px !important;
+    padding-top: 41px !important;
+  }
+  #projects.section-title { margin-top: 256px !important; }
+  #skills.section-title { margin-top: 283px !important; }
+  #about-label.section-title { margin-top: 284px !important; }
+  #blog.section-title { margin-top: 283px !important; }
+  #contact.section-title { margin-top: 279px !important; }
+
+  #education.section-title + .education-grid {
+    margin-top: 64px !important;
+  }
+  .education-grid .education-row {
+    grid-template-columns: 42px minmax(0, 5.2fr) minmax(0, 3fr) minmax(0, 3fr) !important;
+    min-height: 0 !important;
+    gap: 24px !important;
+    margin-bottom: 0 !important;
+    padding: 56px 0 !important;
+  }
+  .education-grid .education-row:first-child {
+    box-sizing: border-box !important;
+    height: 273px !important;
+  }
+  .education-grid .education-row:nth-child(3) {
+    margin-top: 1px !important;
+  }
+  .education-school h3 {
+    font-size: 1.875rem !important;
+    line-height: 1.2 !important;
+  }
+  .education-school p {
+    font-size: .875rem !important;
+  }
+
+  .projects-section {
+    margin-top: 64px !important;
+  }
+  .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 20px !important;
+  }
+  .project-card,
+  .project-card:nth-child(-n+2) {
+    grid-column: span 1 !important;
+    box-sizing: border-box !important;
+    padding: 40px !important;
+    text-align: left !important;
+  }
+  .project-card:nth-child(1),
+  .project-card:nth-child(2) { min-height: 522px !important; }
+  .project-card:nth-child(3),
+  .project-card:nth-child(4) { min-height: 558px !important; }
+  .project-card:nth-child(5),
+  .project-card:nth-child(6) { min-height: 471px !important; }
+  .project-card:nth-child(7),
+  .project-card:nth-child(8) { min-height: 465px !important; }
+  .project-card:nth-child(9),
+  .project-card:nth-child(10) { min-height: 484px !important; }
+  .project-header {
+    width: 100% !important;
+    margin: 32px 0 0 !important;
+  }
+  .project-title {
+    width: 100% !important;
+    text-align: left !important;
+  }
+  .project-kicker {
+    margin: 10px 0 0 !important;
+  }
+  .project-desc {
+    margin: 16px 0 0 !important;
+    line-height: 1.625 !important;
+  }
+  .project-badges {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+  }
+  .project-title {
+    font-size: 1.875rem !important;
+    line-height: 1.2 !important;
+  }
+  .project-desc {
+    font-size: .875rem !important;
+    line-height: 1.625 !important;
+  }
+
+  #skills.section-title + section,
+  #about-label.section-title + .about-section,
+  #blog.section-title + .writing-section,
+  #contact.section-title + .contact-section {
+    margin-top: 36px !important;
+  }
+  .skills-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 32px !important;
+  }
+  .skill-editorial-list li {
+    padding: 16px 0 !important;
+    font: 500 1.5rem/2rem var(--display) !important;
+  }
+  .skill-group:nth-child(-n+3) {
+    box-sizing: border-box !important;
+    min-height: 461px !important;
+  }
+  .skill-group:nth-child(n+4) {
+    box-sizing: border-box !important;
+    height: 430px !important;
+    min-height: 0 !important;
+  }
+
+  .about-section {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 57px 0 !important;
+    padding-top: 0 !important;
+  }
+  .about-editorial-copy {
+    min-height: 594px !important;
+  }
+  .about-scene {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    aspect-ratio: 4 / 5 !important;
+  }
+
+  .writing-card {
+    box-sizing: border-box !important;
+    padding: 36px 0 !important;
+  }
+  .writing-card:not(:nth-child(2)) {
+    min-height: 241px !important;
+  }
+  .writing-card:nth-child(2) {
+    min-height: 205px !important;
+  }
+  .writing-section {
+    padding-top: 28px !important;
+  }
+  .writing-meta {
+    max-width: 110px !important;
+  }
+  #contact.section-title {
+    margin-bottom: 35px !important;
+  }
+  #contact.section-title + .contact-section {
+    margin-top: 35px !important;
+  }
+  .contact-copy-block {
+    box-sizing: border-box !important;
+    height: 228px !important;
+  }
+  .contact-grid {
+    box-sizing: border-box !important;
+    height: 475px !important;
+  }
+  .site-footer {
+    box-sizing: border-box !important;
+    height: 117px !important;
+    margin-top: 60px !important;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 799px) {
+  .skill-group:nth-child(-n+3),
+  .skill-group:nth-child(n+4) {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+  .contact-copy-block,
+  .contact-grid,
+  .site-footer {
+    height: auto !important;
   }
 }

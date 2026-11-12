@@ -1,0 +1,228 @@
+/* ==========================================================================
+   Motion & interaction glue for the reference-faithful static replica.
+   Core design system lives in assets/site.css (copied from the reference).
+   ========================================================================== */
+
+:root {
+  --ease-expo: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* --------------------------------------------------------------------------
+   Header
+   - entrance: y -80, opacity 0 -> 0/1, 0.9s, delay .1s, ease [0.22,1,0.36,1]
+   - scrolled state after scrollY > 24: bg-background/85 + blur-xl + border
+   -------------------------------------------------------------------------- */
+[data-header] {
+  opacity: 0;
+  transform: translateY(-80px);
+  animation: header-in 0.9s var(--ease-expo) 0.1s both;
+}
+
+@keyframes header-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+[data-header].is-scrolled {
+  background-color: hsl(var(--background) / 0.85);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+  border-bottom-color: hsl(var(--border));
+}
+
+/* --------------------------------------------------------------------------
+   Hero line reveals: y 115% -> 0, 1.1s, delay .12s + .13s * index
+   -------------------------------------------------------------------------- */
+[data-line] {
+  animation: line-reveal 1.1s var(--ease-expo) both;
+}
+
+[data-line="0"] { animation-delay: 0.12s; }
+[data-line="1"] { animation-delay: 0.25s; }
+[data-line="2"] { animation-delay: 0.38s; }
+[data-line="3"] { animation-delay: 0.51s; }
+[data-line="4"] { animation-delay: 0.64s; }
+
+@keyframes line-reveal {
+  from {
+    transform: translateY(115%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Hero entrance groups
+   -------------------------------------------------------------------------- */
+[data-hero="cta"] {
+  animation: hero-rise-24 0.9s var(--ease-expo) 0.75s both;
+}
+
+[data-hero="cards"] {
+  animation: hero-rise-20 0.9s var(--ease-expo) 0.9s both;
+}
+
+[data-hero="portrait"] {
+  animation: hero-rise-40 1.1s var(--ease-expo) 0.45s both;
+}
+
+/* the scroll hint also carries -translate-x-1/2, so only opacity animates */
+[data-hero="scroll"] {
+  animation: hero-fade-in 1s cubic-bezier(0.25, 0.1, 0.25, 1) 1.4s both;
+}
+
+@keyframes hero-rise-24 {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes hero-rise-20 {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes hero-rise-40 {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes hero-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* --------------------------------------------------------------------------
+   Scroll reveals
+   opacity 0 / y 28 -> 1 / 0, 0.8s, ease [0.22,1,0.36,1], viewport amount .15
+   -------------------------------------------------------------------------- */
+html.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.8s var(--ease-expo) var(--reveal-delay, 0s),
+    transform 0.8s var(--ease-expo) var(--reveal-delay, 0s);
+}
+
+html.js [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* --------------------------------------------------------------------------
+   Portrait: scroll parallax is JS-driven; float + tilt are layered on top
+   -------------------------------------------------------------------------- */
+/* The parallax layer is a flex item inside the portrait column. It needs
+   min-width: 0 + flex so it can shrink like the reference card does when the
+   column is narrower than the card's 380px (e.g. 1024x768, where the column
+   is 374.7px); otherwise the card stays 380px and sits 5px off the reference. */
+[data-parallax] {
+  display: flex;
+  min-width: 0;
+}
+
+[data-tilt] {
+  transform-style: preserve-3d;
+}
+
+[data-float] {
+  animation: portrait-float 6.5s ease-in-out infinite;
+}
+
+@keyframes portrait-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+
+/* Reference platform cards lift -5px on hover with a spring (300 / 22). */
+[data-testid^="platform-card-"] {
+  transition-property: transform, border-color, background-color, color;
+  transition-duration: 0.35s, 0.3s, 0.3s, 0.3s;
+  transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1), ease, ease, ease;
+}
+
+[data-testid^="platform-card-"]:hover {
+  transform: translateY(-5px);
+}
+
+/* About image parallax target */
+[data-about-image] {
+  will-change: transform;
+}
+
+/* --------------------------------------------------------------------------
+   Theme toggle icon
+   - correct icon is shown before JS runs, then the new icon enters with
+     y 12 / opacity 0 / rotate -30deg -> normal, 0.45s, [0.22,1,0.36,1]
+   -------------------------------------------------------------------------- */
+[data-theme-icon] .theme-icon-sun {
+  display: none;
+}
+
+.dark [data-theme-icon] .theme-icon-sun {
+  display: block;
+}
+
+.dark [data-theme-icon] .theme-icon-moon {
+  display: none;
+}
+
+@keyframes theme-icon-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) rotate(-30deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.theme-icon-anim {
+  animation: theme-icon-in 0.45s var(--ease-expo) both;
+}
+
+/* Command palette is hidden until opened (native [hidden] handles display). */
+[data-palette][data-state="closed"],
+[data-palette-overlay][data-state="closed"] {
+  pointer-events: none;
+}
+
+/* .flex would otherwise override the hidden attribute on command items */
+[data-cmd-item][hidden] {
+  display: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   Blog article entrance: opacity 0 / y 24 -> 1 / 0, 0.8s, ease [0.22,1,.36,1]
+   -------------------------------------------------------------------------- */
+[data-article] {
+  animation: article-in 0.8s var(--ease-expo) both;
+}
+
+@keyframes article-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   The reference lets the contact grid's min-content (362px) overflow the
+   document at the narrowest phones (11px of horizontal scroll on a 375px
+   screen). Clipping that sliver keeps the section geometry reference-exact
+   (same widths, wrapping and heights) while the document itself can no
+   longer scroll horizontally. Kept below 390px so the reference-matched
+   390px layout and every wider viewport are untouched.
+   -------------------------------------------------------------------------- */
+@media (max-width: 389px) {
+  #contact {
+    overflow-x: clip;
+  }
+}
