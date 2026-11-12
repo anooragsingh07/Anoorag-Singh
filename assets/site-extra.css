@@ -226,3 +226,18 @@ html.js [data-reveal].is-visible {
     overflow-x: clip;
   }
 }
+
+/* --------------------------------------------------------------------------
+   Contact social cards (added app logos): the compiled reference CSS ships
+   .truncate but no sm: variant. Codolio's multi-word handle keeps the
+   reference's natural wrap on phones (preserving card rhythm and page
+   heights) and only ellipsize from the sm breakpoint up, where the badge
+   would otherwise force it onto a second line.
+   -------------------------------------------------------------------------- */
+@media (min-width: 640px) {
+  .sm\:truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
