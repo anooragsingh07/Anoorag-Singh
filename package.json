@@ -1,0 +1,14 @@
+{
+  "name": "anoorag-singh-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static portfolio site with a small generator and Playwright regression suites.",
+  "scripts": {
+    "build": "node tools/build.cjs",
+    "test": "node tests/overflow.mjs && node tests/interactions.mjs"
+  },
+  "devDependencies": {
+    "cheerio": "^1.2.0",
+    "playwright": "^1.65.0"
+  }
+}

@@ -9,8 +9,6 @@ const $ = cheerio.load(src, { decodeEntities: false });
 /* Canonical production origin (custom domain on GitHub Pages). */
 const SITE_URL = "https://anoorag.tech";
 const SITE_UPDATED = "2026-11-13";
-const esc = (s) =>
-  String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
 /* ---------- header ---------- */
 const header = $("header").first();
@@ -92,7 +90,9 @@ main
 main.find("img[src^='/assets/']").each((i, el) => {
   const src = $(el).attr("src");
   const local = src.indexOf("/assets/astronaut_avatar") === 0 ? src.slice("/assets/".length) : src.replace(/^\/assets\//, "assets/");
-  $(el).attr("src", local);
+  // Serve the optimized WebP builds of the avatars (1074 KB -> 91 KB,
+  // 369 KB -> 95 KB at quality 97, visually identical to the PNG/JPEG).
+  $(el).attr("src", local.replace(/astronaut_avatar(_dark)?\.png$/, "astronaut_avatar$1.webp"));
 });
 
 /* ---------- contact socials: app logos ---------- */
@@ -337,15 +337,42 @@ ${links}
 </div></article></main>`;
 }
 
-const articleHead = `<!DOCTYPE html>
+const articleDates = {
+  "simulating-cpu-scheduling": "2024-06-10",
+  "why-i-love-cpp": "2024-05-28",
+  "understanding-cpu-scheduling": "2024-05-15",
+  "mind-minute": "2024-04-30",
+  "learning-finance-through-code": "2024-04-10",
+};
+
+const articleHead = (post) => {
+  const slug = post[0];
+  const title = post[1];
+  const intro = postContent[slug].intro;
+  const desc = intro.length > 155 ? intro.slice(0, 152).trimEnd() + "…" : intro;
+  const url = `${SITE_URL}/blog/${slug}.html`;
+  return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#FAF8F5">
-  <meta name="description" content="Anoorag Singh — aspiring software developer, B.Tech IT student and sprinter. Projects, skills, writing and contact.">
-  <title>Anoorag Singh — Portfolio</title>
-  <link rel="icon" type="image/png" href="../astronaut_avatar.png">
+  <meta name="description" content="${esc(desc)}">
+  <title>${esc(title)} · Anoorag Singh</title>
+  <link rel="canonical" href="${url}">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Anoorag Singh">
+  <meta property="og:title" content="${esc(title)}">
+  <meta property="og:description" content="${esc(desc)}">
+  <meta property="og:url" content="${url}">
+  <meta property="og:image" content="${SITE_URL}/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${esc(title)}">
+  <meta name="twitter:description" content="${esc(desc)}">
+  <meta name="twitter:image" content="${SITE_URL}/og-image.jpg">
+  <meta property="article:published_time" content="${articleDates[slug]}">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":${JSON.stringify(title)},"description":${JSON.stringify(desc)},"datePublished":"${articleDates[slug]}","author":{"@type":"Person","name":"Anoorag Singh","url":"${SITE_URL}/"},"url":"${url}","image":"${SITE_URL}/og-image.jpg"}</script>
+  <link rel="icon" type="image/png" href="../favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -353,6 +380,7 @@ const articleHead = `<!DOCTYPE html>
   <link rel="stylesheet" href="../assets/site-extra.css">
   <script>try{var t=localStorage.getItem("as-theme");"dark"===t&&document.documentElement.classList.add("dark")}catch(e){}</script>
 </head>`;
+};
 
 const articleBody = (contentHtml) => `<body>
   <div id="root">
@@ -378,7 +406,19 @@ const page = `<!DOCTYPE html>
   <meta name="theme-color" content="#FAF8F5">
   <meta name="description" content="Anoorag Singh — aspiring software developer, B.Tech IT student and sprinter. Projects, skills, writing and contact.">
   <title>Anoorag Singh — Portfolio</title>
-  <link rel="icon" type="image/png" href="astronaut_avatar.png">
+  <link rel="canonical" href="${SITE_URL}/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Anoorag Singh">
+  <meta property="og:title" content="Anoorag Singh — Portfolio">
+  <meta property="og:description" content="Anoorag Singh — aspiring software developer, B.Tech IT student and sprinter. Projects, skills, writing and contact.">
+  <meta property="og:url" content="${SITE_URL}/">
+  <meta property="og:image" content="${SITE_URL}/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Anoorag Singh — Portfolio">
+  <meta name="twitter:description" content="Anoorag Singh — aspiring software developer, B.Tech IT student and sprinter. Projects, skills, writing and contact.">
+  <meta name="twitter:image" content="${SITE_URL}/og-image.jpg">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Anoorag Singh","url":"${SITE_URL}/","image":"${SITE_URL}/og-image.jpg","jobTitle":"Software Developer","sameAs":["https://github.com/anooragsingh07","https://linkedin.com/in/anooragsingh","https://x.com/code_anoorag","https://medium.com/@anooragsingh0007","https://codolio.com/profile/Anoorag%20Singh"]}</script>
+  <link rel="icon" type="image/png" href="favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -407,7 +447,32 @@ console.log("written", page.length);
 
 posts.forEach((post, index) => {
   const next = posts[(index + 1) % posts.length];
-  const articlePage = articleHead + articleBody(articleMarkup(post, next));
+  const articlePage = articleHead(post) + articleBody(articleMarkup(post, next));
   fs.writeFileSync(path.join(site, "blog", `${post[0]}.html`), articlePage, "utf8");
   console.log("written blog/" + post[0] + ".html", articlePage.length);
 });
+
+/* ---------- crawler files ---------- */
+const robots = `User-agent: *
+Allow: /
+
+Sitemap: ${SITE_URL}/sitemap.xml
+`;
+fs.writeFileSync(path.join(site, "robots.txt"), robots, "utf8");
+
+const sitemapUrls = [
+  { loc: `${SITE_URL}/`, lastmod: SITE_UPDATED },
+  ...posts.map((post) => ({ loc: `${SITE_URL}/blog/${post[0]}.html`, lastmod: articleDates[post[0]] })),
+];
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${sitemapUrls
+  .map((u) => `  <url>
+    <loc>${u.loc}</loc>
+    <lastmod>${u.lastmod}</lastmod>
+  </url>`)
+  .join("\n")}
+</urlset>
+`;
+fs.writeFileSync(path.join(site, "sitemap.xml"), sitemap, "utf8");
+console.log("written robots.txt + sitemap.xml");
