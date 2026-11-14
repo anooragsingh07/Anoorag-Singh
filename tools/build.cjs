@@ -132,6 +132,13 @@ main.find('a[data-testid^="social-"][data-testid$="-link"]').each((_, el) => {
   text.replaceWith(`<span class="flex min-w-0 items-center gap-3">${badge}${textHtml}</span>`);
 });
 
+// The reference gives the X card an X mark as its trailing "open" glyph
+// while the other three cards use the ↗ arrow — normalize it to match.
+// (The circular badge on the left keeps the X logo, as designed.)
+const openArrow =
+  '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right h-4 w-4" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>';
+main.find('[data-testid="social-x-link"]').children().last().html(openArrow);
+
 /* ---------- footer ---------- */
 const footer = $("footer").first();
 footer.find('[data-testid="footer-back-to-top"]').attr("data-back-to-top", "");
