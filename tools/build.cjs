@@ -139,6 +139,11 @@ const openArrow =
   '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right h-4 w-4" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>';
 main.find('[data-testid="social-x-link"]').children().last().html(openArrow);
 
+/* ---------- contact: mobile number removed (user request) ---------- */
+// Drop the entire "Mobile" row (tel: link + display + copy button) from the
+// contact section. Nothing else on the site references the number.
+main.find('[data-testid="contact-phone-link-row"]').remove();
+
 /* ---------- footer ---------- */
 const footer = $("footer").first();
 footer.find('[data-testid="footer-back-to-top"]').attr("data-back-to-top", "");

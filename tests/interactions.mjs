@@ -97,7 +97,7 @@ record("social links", links.socials.every(([k, v]) => v === expectedSocials[k])
 record("resume link", links.resume === "resume/Resume.pdf" && links.resumeTarget === "_blank" && links.resumeDownload === null, `${links.resume} / target=${links.resumeTarget} / download=${links.resumeDownload}`);
 record("contact resume link", links.contactResume === "resume/Resume.pdf", String(links.contactResume));
 record("email link", links.email === "mailto:anooragsingh0007@gmail.com", String(links.email));
-record("phone link", links.phone === "tel:+919571375741", String(links.phone));
+record("phone removed from contact", links.phone === null, String(links.phone));
 record("footer year", links.year === String(new Date().getFullYear()), String(links.year));
 record("blog links", links.blog.length === 5 && links.blog.every(([id, href]) => href === "blog/" + id.replace("blog-article-", "") + ".html"), JSON.stringify(links.blog));
 record("github more writing", links.githubMore === "https://github.com/anooragsingh07", String(links.githubMore));
@@ -125,7 +125,7 @@ try {
 /* contact copy buttons */
 await page.evaluate(() => document.getElementById("contact").scrollIntoView({ block: "start", behavior: "instant" }));
 await wait(800);
-for (const [kind, expected] of [["email", "anooragsingh0007@gmail.com"], ["phone", "+91 9571375741"]]) {
+for (const [kind, expected] of [["email", "anooragsingh0007@gmail.com"]]) {
   const buttonSel = `[data-testid="contact-${kind}-link-copy-button"]`;
   await page.click(buttonSel);
   await wait(250);
